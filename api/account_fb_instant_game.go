@@ -11,7 +11,7 @@ type AccountFacebookInstantGame struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The OAuth token received from a Facebook Instant Game that may be decoded with the Application Secret (must be available with the nakama configuration)
+	// The OAuth token received from a Facebook Instant Game that may be decoded with the Application Secret (must be available with the layerg configuration)
 	SignedPlayerInfo string `protobuf:"bytes,1,opt,name=signed_player_info,json=signedPlayerInfo,proto3" json:"signed_player_info,omitempty"`
 	// Extra information that will be bundled in the session token.
 	Vars map[string]string `protobuf:"bytes,2,rep,name=vars,proto3" json:"vars,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`

@@ -108,7 +108,7 @@ type Initializer interface {
 	RegisterAfterAuthenticateApple(fn func(ctx context.Context, logger Logger, db *sql.DB, layerg LayerGModule, out *api.Session, in *api.AuthenticateAppleRequest) error) error
 
 	// RegisterBeforeAuthenticateCustom can be used to perform pre-authentication checks.
-	// You can use this to process the input (such as decoding custom tokens) and ensure inter-compatibility between Nakama and your own custom system.
+	// You can use this to process the input (such as decoding custom tokens) and ensure inter-compatibility between Layerg and your own custom system.
 	RegisterBeforeAuthenticateCustom(fn func(ctx context.Context, logger Logger, db *sql.DB, layerg LayerGModule, in *api.AuthenticateCustomRequest) (*api.AuthenticateCustomRequest, error)) error
 
 	// RegisterAfterAuthenticateCustom can be used to perform after successful authentication checks.

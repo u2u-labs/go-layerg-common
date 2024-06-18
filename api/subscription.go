@@ -434,7 +434,7 @@ func (x *ValidatedSubscription) GetActive() bool {
 	return false
 }
 
-// A list of validated subscriptions stored by Nakama.
+// A list of validated subscriptions stored by Layerg.
 type SubscriptionList struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

@@ -248,7 +248,7 @@ func (x *ValidatePurchaseFacebookInstantRequest) GetPersist() *wrapperspb.BoolVa
 	return nil
 }
 
-// Validated Purchase stored by Nakama.
+// Validated Purchase stored by Layerg.
 type ValidatedPurchase struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -274,7 +274,7 @@ type ValidatedPurchase struct {
 	ProviderResponse string `protobuf:"bytes,9,opt,name=provider_response,json=providerResponse,proto3" json:"provider_response,omitempty"`
 	// Whether the purchase was done in production or sandbox environment.
 	Environment StoreEnvironment `protobuf:"varint,10,opt,name=environment,proto3,enum=nakama.api.StoreEnvironment" json:"environment,omitempty"`
-	// Whether the purchase had already been validated by Nakama before.
+	// Whether the purchase had already been validated by Layerg before.
 	SeenBefore bool `protobuf:"varint,11,opt,name=seen_before,json=seenBefore,proto3" json:"seen_before,omitempty"`
 }
 
@@ -436,7 +436,7 @@ func (x *ValidatePurchaseResponse) GetValidatedPurchases() []*ValidatedPurchase 
 	return nil
 }
 
-// A list of validated purchases stored by Nakama.
+// A list of validated purchases stored by Layerg.
 type PurchaseList struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
