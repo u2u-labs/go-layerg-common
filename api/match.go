@@ -3,6 +3,7 @@ package api
 import (
 	"google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	"google.golang.org/protobuf/types/known/timestamppb"
 	"google.golang.org/protobuf/types/known/wrapperspb"
 )
 
@@ -239,6 +240,126 @@ func (*MatchList) Descriptor() ([]byte, []int) {
 func (x *MatchList) GetMatches() []*Match {
 	if x != nil {
 		return x.Matches
+	}
+	return nil
+}
+
+// Matchmaker ticket completion stats
+type MatchmakerCompletionStats struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	CreateTime   *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CompleteTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=complete_time,json=completeTime,proto3" json:"complete_time,omitempty"`
+}
+
+func (x *MatchmakerCompletionStats) Reset() {
+	*x = MatchmakerCompletionStats{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_api_proto_msgTypes[74]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MatchmakerCompletionStats) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MatchmakerCompletionStats) ProtoMessage() {}
+
+func (x *MatchmakerCompletionStats) ProtoReflect() protoreflect.Message {
+	mi := &file_api_proto_msgTypes[74]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MatchmakerCompletionStats.ProtoReflect.Descriptor instead.
+func (*MatchmakerCompletionStats) Descriptor() ([]byte, []int) {
+	return file_api_proto_rawDescGZIP(), []int{74}
+}
+
+func (x *MatchmakerCompletionStats) GetCreateTime() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreateTime
+	}
+	return nil
+}
+
+func (x *MatchmakerCompletionStats) GetCompleteTime() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CompleteTime
+	}
+	return nil
+}
+
+// Matchmaker stats
+type MatchmakerStats struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	TicketCount            int32                        `protobuf:"varint,1,opt,name=ticket_count,json=ticketCount,proto3" json:"ticket_count,omitempty"`
+	OldestTicketCreateTime *timestamppb.Timestamp       `protobuf:"bytes,2,opt,name=oldest_ticket_create_time,json=oldestTicketCreateTime,proto3" json:"oldest_ticket_create_time,omitempty"`
+	Completions            []*MatchmakerCompletionStats `protobuf:"bytes,3,rep,name=completions,proto3" json:"completions,omitempty"`
+}
+
+func (x *MatchmakerStats) Reset() {
+	*x = MatchmakerStats{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_api_proto_msgTypes[75]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MatchmakerStats) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MatchmakerStats) ProtoMessage() {}
+
+func (x *MatchmakerStats) ProtoReflect() protoreflect.Message {
+	mi := &file_api_proto_msgTypes[75]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MatchmakerStats.ProtoReflect.Descriptor instead.
+func (*MatchmakerStats) Descriptor() ([]byte, []int) {
+	return file_api_proto_rawDescGZIP(), []int{75}
+}
+
+func (x *MatchmakerStats) GetTicketCount() int32 {
+	if x != nil {
+		return x.TicketCount
+	}
+	return 0
+}
+
+func (x *MatchmakerStats) GetOldestTicketCreateTime() *timestamppb.Timestamp {
+	if x != nil {
+		return x.OldestTicketCreateTime
+	}
+	return nil
+}
+
+func (x *MatchmakerStats) GetCompletions() []*MatchmakerCompletionStats {
+	if x != nil {
+		return x.Completions
 	}
 	return nil
 }
