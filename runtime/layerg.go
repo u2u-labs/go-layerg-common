@@ -169,6 +169,6 @@ type LayerGModule interface {
 	ChannelMessageRemove(ctx context.Context, channelId, messageId string, senderId, senderUsername string, persist bool) (*rtapi.ChannelMessageAck, error)
 	ChannelMessagesList(ctx context.Context, channelId string, limit int, forward bool, cursor string) (messages []*api.ChannelMessage, nextCursor string, prevCursor string, err error)
 
-	// GetSatori() Satori
-	// GetFleetManager() FleetManager
+	GetSatori() Satori
+	GetFleetManager() FleetManager
 }
