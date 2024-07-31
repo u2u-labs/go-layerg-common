@@ -13,22 +13,18 @@
 // limitations under the License.
 
 /**
- * The Nakama server RPC protocol for games and apps.
+ * The LayerG server RPC protocol for games and apps.
  */
 syntax = "proto3";
 
-package nakama.api;
+package layerg.api;
 
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/wrappers.proto";
 
-option go_package = "github.com/heroiclabs/nakama-common/api";
+option go_package = "github.com/u2u-labs/go-layerg-common/api";
 
-option java_multiple_files = true;
-option java_outer_classname = "NakamaApi";
-option java_package = "com.heroiclabs.nakama.api";
-
-option csharp_namespace = "Nakama.Protobuf";
+option csharp_namespace = "LayerG.Protobuf";
 
 // A user with additional account details. Always the current user.
 message Account {
@@ -100,7 +96,7 @@ message AccountFacebook {
 
 // Send a Facebook Instant Game token to the server. Used with authenticate/link/unlink.
 message AccountFacebookInstantGame {
-  // The OAuth token received from a Facebook Instant Game that may be decoded with the Application Secret (must be available with the nakama configuration)
+  // The OAuth token received from a Facebook Instant Game that may be decoded with the Application Secret (must be available with the layerG configuration)
   string signed_player_info = 1;
   // Extra information that will be bundled in the session token.
   map<string, string> vars = 2;
@@ -1233,7 +1229,7 @@ message ValidatePurchaseFacebookInstantRequest {
   google.protobuf.BoolValue persist = 2;
 }
 
-// Validated Purchase stored by Nakama.
+// Validated Purchase stored by LayerG.
 message ValidatedPurchase {
   // Purchase User ID.
   string user_id = 1;
@@ -1255,7 +1251,7 @@ message ValidatedPurchase {
   string provider_response = 9;
   // Whether the purchase was done in production or sandbox environment.
   StoreEnvironment environment = 10;
-  // Whether the purchase had already been validated by Nakama before.
+  // Whether the purchase had already been validated by LayerG before.
   bool seen_before = 11;
 }
 
@@ -1321,7 +1317,7 @@ message ValidatedSubscription {
   bool active = 13;
 }
 
-// A list of validated purchases stored by Nakama.
+// A list of validated purchases stored by LayerG.
 message PurchaseList {
   // Stored validated purchases.
   repeated ValidatedPurchase validated_purchases = 1;
@@ -1331,7 +1327,7 @@ message PurchaseList {
   string prev_cursor = 3;
 }
 
-// A list of validated subscriptions stored by Nakama.
+// A list of validated subscriptions stored by LayerG.
 message SubscriptionList {
   // Stored validated subscriptions.
   repeated ValidatedSubscription validated_subscriptions = 1;
