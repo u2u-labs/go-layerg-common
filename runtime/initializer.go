@@ -103,9 +103,11 @@ type Initializer interface {
 
 	// RegisterBeforeAuthenticateApple can be used to perform pre-authentication checks.
 	RegisterBeforeAuthenticateApple(fn func(ctx context.Context, logger Logger, db *sql.DB, layerg LayerGModule, in *api.AuthenticateAppleRequest) (*api.AuthenticateAppleRequest, error)) error
+	RegisterBeforeAuthenticateMetamask(fn func(ctx context.Context, logger Logger, db *sql.DB, layerg LayerGModule, in *api.AuthenticateMetamaskRequest) (*api.AuthenticateMetamaskRequest, error)) error
 
 	// RegisterAfterAuthenticateApple can be used to perform after successful authentication checks.
 	RegisterAfterAuthenticateApple(fn func(ctx context.Context, logger Logger, db *sql.DB, layerg LayerGModule, out *api.Session, in *api.AuthenticateAppleRequest) error) error
+	RegisterAfterAuthenticateMetamask(fn func(ctx context.Context, logger Logger, db *sql.DB, layerg LayerGModule, out *api.Session, in *api.AuthenticateMetamaskRequest) error) error
 
 	// RegisterBeforeAuthenticateCustom can be used to perform pre-authentication checks.
 	// You can use this to process the input (such as decoding custom tokens) and ensure inter-compatibility between Layerg and your own custom system.

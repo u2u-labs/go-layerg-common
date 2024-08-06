@@ -44,11 +44,13 @@ type LayerGModule interface {
 	LinkGameCenter(ctx context.Context, userID, playerID, bundleID string, timestamp int64, salt, signature, publicKeyUrl string) error
 	LinkGoogle(ctx context.Context, userID, token string) error
 	LinkSteam(ctx context.Context, userID, username, token string, importFriends bool) error
+	LinkMetamask(ctx context.Context, userID, address, signature string) error
 
 	CronPrev(expression string, timestamp int64) (int64, error)
 	CronNext(expression string, timestamp int64) (int64, error)
 	ReadFile(path string) (*os.File, error)
 
+	UnlinkMetamask(ctx context.Context, userID, address, signature string) error
 	UnlinkApple(ctx context.Context, userID, token string) error
 	UnlinkCustom(ctx context.Context, userID, customID string) error
 	UnlinkDevice(ctx context.Context, userID, deviceID string) error
