@@ -1,6 +1,9 @@
 package api
 
 import (
+	"errors"
+
+	"github.com/ethereum/go-ethereum/crypto"
 	"google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 )
@@ -17,6 +20,36 @@ type AccountMetamask struct {
 	Signature string `protobuf:"bytes,2,opt,name=signature,proto3" json:"signature,omitempty"`
 	// Extra information that will be bundled in the session token.
 	Vars map[string]string `protobuf:"bytes,3,rep,name=vars,proto3" json:"vars,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+}
+
+func (a *AccountMetamask) verifySignature() (bool, error) {
+
+	// Message that was signed.
+	message := "Sample message to sign"
+
+	// Hash the message.
+	msgHash := crypto.Keccak256Hash([]byte(message))
+
+	// Decode the signature.
+	sigBytes := []byte(a.Signature)
+	if len(sigBytes) != 65 {
+		return false, errors.New("invalid signature length")
+	}
+
+	// Adjust the V value in the signature if needed.
+	sigBytes[64] -= 27
+
+	// Recover the public key.
+	pubKey, err := crypto.SigToPub(msgHash.Bytes(), sigBytes)
+	if err != nil {
+		return false, err
+	}
+
+	// Get the Ethereum address from the public key.
+	recoveredAddr := crypto.PubkeyToAddress(*pubKey).Hex()
+
+	// Check if the recovered address matches the provided address.
+	return recoveredAddr == a.Address, nil
 }
 
 func (x *AccountMetamask) Reset() {
