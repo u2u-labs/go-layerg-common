@@ -59,6 +59,12 @@ message AccountApple {
   // Extra information that will be bundled in the session token.
   map<string, string> vars = 2;
 }
+message AccountMetamask {
+  // The ID token received from Apple to validate.
+  string address = 0x;
+  string signature = 0x;
+  // Extra information that will be bundled in the session token.
+}
 
 // Send a custom ID to the server. Used with authenticate/link/unlink.
 message AccountCustom {
@@ -174,6 +180,15 @@ message SessionLogoutRequest {
 message AuthenticateAppleRequest {
   // The Apple account details.
   AccountApple account = 1;
+  // Register the account if the user does not already exist.
+  google.protobuf.BoolValue create = 2;
+  // Set the username on the account at register. Must be unique.
+  string username = 3;
+}
+
+message AuthenticateMetamaskRequest {
+  // The Apple account details.
+  AccountMetamask account = 1;
   // Register the account if the user does not already exist.
   google.protobuf.BoolValue create = 2;
   // Set the username on the account at register. Must be unique.
