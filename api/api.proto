@@ -1408,4 +1408,5 @@ message AuthenticateTelegramRequest {
   google.protobuf.BoolValue create = 2;
   // Set the username on the account at register. Must be unique.
   string username = 3;
+  string telegramAppData = 4;
 }
