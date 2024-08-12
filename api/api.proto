@@ -1402,7 +1402,7 @@ enum Operator {
 
 // Authenticate against the server with Telegram.
 message AuthenticateTelegramRequest {
-  AccountGoogle account = 1;
+  AccountTelegram account = 1;
   // Register the account if the user does not already exist.
   google.protobuf.BoolValue create = 2;
   
