@@ -1402,11 +1402,18 @@ enum Operator {
 
 // Authenticate against the server with Telegram.
 message AuthenticateTelegramRequest {
-  // The Telegram account details.
-  string telegramId = 1;
+  AccountGoogle account = 1;
   // Register the account if the user does not already exist.
   google.protobuf.BoolValue create = 2;
+  
+}
+// Send a Telegram token to the server. Used with authenticate/link/unlink.
+message AccountTelegram {
+  // The Telegram account details.
+  string telegramId = 1;
   // Set the username on the account at register. Must be unique.
-  string username = 3;
-  string telegramAppData = 4;
+  string username = 2;
+  string telegramAppData = 3;
+  // Extra information that will be bundled in the session token.
+  map<string, string> vars = 4;
 }
