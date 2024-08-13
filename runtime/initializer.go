@@ -127,6 +127,12 @@ type Initializer interface {
 	// RegisterAfterAuthenticateEmail can be used to perform after successful authentication checks.
 	RegisterAfterAuthenticateEmail(fn func(ctx context.Context, logger Logger, db *sql.DB, layerg LayerGModule, out *api.Session, in *api.AuthenticateEmailRequest) error) error
 
+	// RegisterBeforeAuthenticateTelegram can be used to perform pre-authentication checks.
+	RegisterBeforeAuthenticateTelegram(fn func(ctx context.Context, logger Logger, db *sql.DB, layerg LayerGModule, in *api.AuthenticateTelegramRequest) (*api.AuthenticateTelegramRequest, error)) error
+
+	// RegisterAfterAuthenticateTelegram can be used to perform after successful authentication checks.
+	RegisterAfterAuthenticateTelegram(fn func(ctx context.Context, logger Logger, db *sql.DB, layerg LayerGModule, out *api.Session, in *api.AuthenticateTelegramRequest) error) error
+
 	// RegisterBeforeAuthenticateFacebook can be used to perform pre-authentication checks.
 	RegisterBeforeAuthenticateFacebook(fn func(ctx context.Context, logger Logger, db *sql.DB, layerg LayerGModule, in *api.AuthenticateFacebookRequest) (*api.AuthenticateFacebookRequest, error)) error
 
