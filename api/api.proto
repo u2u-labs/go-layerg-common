@@ -1410,10 +1410,10 @@ message AuthenticateTelegramRequest {
 // Send a Telegram token to the server. Used with authenticate/link/unlink.
 message AccountTelegram {
   // The Telegram account details.
-  string telegramId = 1;
+  string telegram_id = 1;
   // Set the username on the account at register. Must be unique.
   string username = 2;
-  string telegramAppData = 3;
+  string telegram_app_data = 3;
   // Extra information that will be bundled in the session token.
   map<string, string> vars = 4;
 }
