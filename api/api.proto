@@ -1425,7 +1425,7 @@ message AuthenticateEvmRequest {
   google.protobuf.BoolValue create = 2;
   
 }
-// Send a Telegram token to the server. Used with authenticate/link/unlink.
+// Send a Evm token to the server. Used with authenticate/link/unlink.
 message AccountEvm {
   // The Telegram account details.
   string evm_address = 1;
