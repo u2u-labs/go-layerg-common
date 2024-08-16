@@ -1417,3 +1417,21 @@ message AccountTelegram {
   // Extra information that will be bundled in the session token.
   map<string, string> vars = 4;
 }
+
+// Authenticate against the server with Telegram.
+message AuthenticateEvmRequest {
+  AccountEvm account = 1;
+  // Register the account if the user does not already exist.
+  google.protobuf.BoolValue create = 2;
+  
+}
+// Send a Evm token to the server. Used with authenticate/link/unlink.
+message AccountEvm {
+  // The Telegram account details.
+  string evm_address = 1;
+  // Set the username on the account at register. Must be unique.
+  string username = 2;
+  string evm_signature = 3;
+  // Extra information that will be bundled in the session token.
+  map<string, string> vars = 4;
+}
