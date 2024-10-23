@@ -10,7 +10,36 @@ import "google/protobuf/wrappers.proto";
 
 option go_package = "github.com/u2u-labs/go-layerg-common/api";
 
+option java_multiple_files = true;
+option java_outer_classname = "LayerGApi";
+option java_package = "com.u2ulabs.layerg.api";
+
 option csharp_namespace = "LayerG.Protobuf";
+
+message Query {
+  repeated string value = 1; 
+}
+
+message Request {
+  string cid = 1;
+  map<string, string> header = 2;
+  map<string, Query> query = 3;
+  string http_key = 4;
+  string name = 5;
+  oneof body {
+    bytes bytesValue = 6;
+    string stringValue = 7;
+  }
+}
+
+message ResponseWriter {
+  string cid = 1;
+  map<string, string> header = 2;
+  oneof body {
+    bytes bytesValue = 4;
+    string stringValue = 5;
+  }
+}
 
 // A user with additional account details. Always the current user.
 message Account {
@@ -82,7 +111,7 @@ message AccountFacebook {
 
 // Send a Facebook Instant Game token to the server. Used with authenticate/link/unlink.
 message AccountFacebookInstantGame {
-  // The OAuth token received from a Facebook Instant Game that may be decoded with the Application Secret (must be available with the layerG configuration)
+  // The OAuth token received from a Facebook Instant Game that may be decoded with the Application Secret (must be available with the nakama configuration)
   string signed_player_info = 1;
   // Extra information that will be bundled in the session token.
   map<string, string> vars = 2;

@@ -12,6 +12,10 @@ import "api/api.proto";
 
 option go_package = "github.com/u2u-labs/go-layerg-common/rtapi";
 
+option java_multiple_files = true;
+option java_outer_classname = "LayerGRealtime";
+option java_package = "com.u2ulabs.layerg.rtapi";
+
 option csharp_namespace = "LayerG.Protobuf";
 
 // An envelope for a realtime message.
@@ -116,6 +120,8 @@ message Envelope {
     PartyDataSend party_data_send = 49;
     // Presence update for a particular party.
     PartyPresenceEvent party_presence_event = 50;
+    api.Request request = 51;
+    api.ResponseWriter responseWriter = 52;
   }
 }
 

@@ -172,3 +172,29 @@ type LayerGModule interface {
 	GetSatori() Satori
 	GetFleetManager() FleetManager
 }
+
+type MessageList struct {
+	Messages        []*Message `json:"messages,omitempty"`
+	NextCursor      string     `json:"next_cursor,omitempty"`
+	PrevCursor      string     `json:"prev_cursor,omitempty"`
+	CacheableCursor string     `json:"cacheable_cursor,omitempty"`
+}
+
+type Message struct {
+	ScheduleId  string         `json:"schedule_id,omitempty"`
+	SendTime    int64          `json:"send_time,string,omitempty"`
+	Metadata    map[string]any `json:"metadata,omitempty"`
+	CreateTime  int64          `json:"create_time,string,omitempty"`
+	UpdateTime  int64          `json:"update_time,string,omitempty"`
+	ReadTime    int64          `json:"read_time,string,omitempty"`
+	ConsumeTime int64          `json:"consume_time,string,omitempty"`
+	Text        string         `json:"text,omitempty"`
+	Id          string         `json:"id,omitempty"`
+	Title       string         `json:"title,omitempty"`
+	ImageUrl    string         `json:"image_url,omitempty"`
+}
+
+type MessageUpdate struct {
+	ReadTime    int64 `json:"read_time,omitempty"`
+	ConsumeTime int64 `json:"consume_time,omitempty"`
+}
