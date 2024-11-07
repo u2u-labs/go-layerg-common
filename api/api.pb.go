@@ -8900,6 +8900,77 @@ func (x *AuthenticateTelegramRequest) GetCreate() *wrapperspb.BoolValue {
 	return nil
 }
 
+type AuthenticateUA struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Jwt        string                `protobuf:"bytes,1,opt,name=jwt,proto3" json:"jwt,omitempty"`
+	RefreshJwt string                `protobuf:"bytes,2,opt,name=refresh_jwt,json=refreshJwt,proto3" json:"refresh_jwt,omitempty"`
+	Vars       map[string]string     `protobuf:"bytes,3,rep,name=vars,proto3" json:"vars,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Create     *wrapperspb.BoolValue `protobuf:"bytes,4,opt,name=create,proto3" json:"create,omitempty"`
+}
+
+func (x *AuthenticateUA) Reset() {
+	*x = AuthenticateUA{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_api_proto_msgTypes[117]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *AuthenticateUA) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AuthenticateUA) ProtoMessage() {}
+
+func (x *AuthenticateUA) ProtoReflect() protoreflect.Message {
+	mi := &file_api_proto_msgTypes[117]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AuthenticateUA.ProtoReflect.Descriptor instead.
+func (*AuthenticateUA) Descriptor() ([]byte, []int) {
+	return file_api_proto_rawDescGZIP(), []int{117}
+}
+
+func (x *AuthenticateUA) GetJwt() string {
+	if x != nil {
+		return x.Jwt
+	}
+	return ""
+}
+
+func (x *AuthenticateUA) GetRefreshJwt() string {
+	if x != nil {
+		return x.RefreshJwt
+	}
+	return ""
+}
+
+func (x *AuthenticateUA) GetVars() map[string]string {
+	if x != nil {
+		return x.Vars
+	}
+	return nil
+}
+
+func (x *AuthenticateUA) GetCreate() *wrapperspb.BoolValue {
+	if x != nil {
+		return x.Create
+	}
+	return nil
+}
+
 // Send a Telegram token to the server. Used with authenticate/link/unlink.
 type AccountTelegram struct {
 	state         protoimpl.MessageState
@@ -8918,7 +8989,7 @@ type AccountTelegram struct {
 func (x *AccountTelegram) Reset() {
 	*x = AccountTelegram{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_proto_msgTypes[117]
+		mi := &file_api_proto_msgTypes[118]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8931,7 +9002,7 @@ func (x *AccountTelegram) String() string {
 func (*AccountTelegram) ProtoMessage() {}
 
 func (x *AccountTelegram) ProtoReflect() protoreflect.Message {
-	mi := &file_api_proto_msgTypes[117]
+	mi := &file_api_proto_msgTypes[118]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8944,7 +9015,7 @@ func (x *AccountTelegram) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AccountTelegram.ProtoReflect.Descriptor instead.
 func (*AccountTelegram) Descriptor() ([]byte, []int) {
-	return file_api_proto_rawDescGZIP(), []int{117}
+	return file_api_proto_rawDescGZIP(), []int{118}
 }
 
 func (x *AccountTelegram) GetTelegramId() string {
@@ -8989,7 +9060,7 @@ type AuthenticateEvmRequest struct {
 func (x *AuthenticateEvmRequest) Reset() {
 	*x = AuthenticateEvmRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_proto_msgTypes[118]
+		mi := &file_api_proto_msgTypes[119]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9002,7 +9073,7 @@ func (x *AuthenticateEvmRequest) String() string {
 func (*AuthenticateEvmRequest) ProtoMessage() {}
 
 func (x *AuthenticateEvmRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_proto_msgTypes[118]
+	mi := &file_api_proto_msgTypes[119]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9015,7 +9086,7 @@ func (x *AuthenticateEvmRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AuthenticateEvmRequest.ProtoReflect.Descriptor instead.
 func (*AuthenticateEvmRequest) Descriptor() ([]byte, []int) {
-	return file_api_proto_rawDescGZIP(), []int{118}
+	return file_api_proto_rawDescGZIP(), []int{119}
 }
 
 func (x *AuthenticateEvmRequest) GetAccount() *AccountEvm {
@@ -9050,7 +9121,7 @@ type AccountEvm struct {
 func (x *AccountEvm) Reset() {
 	*x = AccountEvm{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_proto_msgTypes[119]
+		mi := &file_api_proto_msgTypes[120]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9063,7 +9134,7 @@ func (x *AccountEvm) String() string {
 func (*AccountEvm) ProtoMessage() {}
 
 func (x *AccountEvm) ProtoReflect() protoreflect.Message {
-	mi := &file_api_proto_msgTypes[119]
+	mi := &file_api_proto_msgTypes[120]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9076,7 +9147,7 @@ func (x *AccountEvm) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AccountEvm.ProtoReflect.Descriptor instead.
 func (*AccountEvm) Descriptor() ([]byte, []int) {
-	return file_api_proto_rawDescGZIP(), []int{119}
+	return file_api_proto_rawDescGZIP(), []int{120}
 }
 
 func (x *AccountEvm) GetEvmAddress() string {
@@ -9122,7 +9193,7 @@ type FriendsOfFriendsList_FriendOfFriend struct {
 func (x *FriendsOfFriendsList_FriendOfFriend) Reset() {
 	*x = FriendsOfFriendsList_FriendOfFriend{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_proto_msgTypes[135]
+		mi := &file_api_proto_msgTypes[136]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9135,7 +9206,7 @@ func (x *FriendsOfFriendsList_FriendOfFriend) String() string {
 func (*FriendsOfFriendsList_FriendOfFriend) ProtoMessage() {}
 
 func (x *FriendsOfFriendsList_FriendOfFriend) ProtoReflect() protoreflect.Message {
-	mi := &file_api_proto_msgTypes[135]
+	mi := &file_api_proto_msgTypes[136]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9180,7 +9251,7 @@ type GroupUserList_GroupUser struct {
 func (x *GroupUserList_GroupUser) Reset() {
 	*x = GroupUserList_GroupUser{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_proto_msgTypes[136]
+		mi := &file_api_proto_msgTypes[137]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9193,7 +9264,7 @@ func (x *GroupUserList_GroupUser) String() string {
 func (*GroupUserList_GroupUser) ProtoMessage() {}
 
 func (x *GroupUserList_GroupUser) ProtoReflect() protoreflect.Message {
-	mi := &file_api_proto_msgTypes[136]
+	mi := &file_api_proto_msgTypes[137]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9238,7 +9309,7 @@ type UserGroupList_UserGroup struct {
 func (x *UserGroupList_UserGroup) Reset() {
 	*x = UserGroupList_UserGroup{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_proto_msgTypes[137]
+		mi := &file_api_proto_msgTypes[138]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9251,7 +9322,7 @@ func (x *UserGroupList_UserGroup) String() string {
 func (*UserGroupList_UserGroup) ProtoMessage() {}
 
 func (x *UserGroupList_UserGroup) ProtoReflect() protoreflect.Message {
-	mi := &file_api_proto_msgTypes[137]
+	mi := &file_api_proto_msgTypes[138]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9300,7 +9371,7 @@ type WriteLeaderboardRecordRequest_LeaderboardRecordWrite struct {
 func (x *WriteLeaderboardRecordRequest_LeaderboardRecordWrite) Reset() {
 	*x = WriteLeaderboardRecordRequest_LeaderboardRecordWrite{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_proto_msgTypes[138]
+		mi := &file_api_proto_msgTypes[139]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9313,7 +9384,7 @@ func (x *WriteLeaderboardRecordRequest_LeaderboardRecordWrite) String() string {
 func (*WriteLeaderboardRecordRequest_LeaderboardRecordWrite) ProtoMessage() {}
 
 func (x *WriteLeaderboardRecordRequest_LeaderboardRecordWrite) ProtoReflect() protoreflect.Message {
-	mi := &file_api_proto_msgTypes[138]
+	mi := &file_api_proto_msgTypes[139]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9376,7 +9447,7 @@ type WriteTournamentRecordRequest_TournamentRecordWrite struct {
 func (x *WriteTournamentRecordRequest_TournamentRecordWrite) Reset() {
 	*x = WriteTournamentRecordRequest_TournamentRecordWrite{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_proto_msgTypes[139]
+		mi := &file_api_proto_msgTypes[140]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9389,7 +9460,7 @@ func (x *WriteTournamentRecordRequest_TournamentRecordWrite) String() string {
 func (*WriteTournamentRecordRequest_TournamentRecordWrite) ProtoMessage() {}
 
 func (x *WriteTournamentRecordRequest_TournamentRecordWrite) ProtoReflect() protoreflect.Message {
-	mi := &file_api_proto_msgTypes[139]
+	mi := &file_api_proto_msgTypes[140]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10799,67 +10870,82 @@ var file_api_proto_rawDesc = []byte{
 	0x07, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x32, 0x0a, 0x06, 0x63, 0x72, 0x65, 0x61,
 	0x74, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
 	0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x42, 0x6f, 0x6f, 0x6c, 0x56,
-	0x61, 0x6c, 0x75, 0x65, 0x52, 0x06, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x22, 0xee, 0x01, 0x0a,
-	0x0f, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x54, 0x65, 0x6c, 0x65, 0x67, 0x72, 0x61, 0x6d,
-	0x12, 0x1f, 0x0a, 0x0b, 0x74, 0x65, 0x6c, 0x65, 0x67, 0x72, 0x61, 0x6d, 0x5f, 0x69, 0x64, 0x18,
-	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x74, 0x65, 0x6c, 0x65, 0x67, 0x72, 0x61, 0x6d, 0x49,
-	0x64, 0x12, 0x1a, 0x0a, 0x08, 0x75, 0x73, 0x65, 0x72, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x08, 0x75, 0x73, 0x65, 0x72, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x2a, 0x0a,
-	0x11, 0x74, 0x65, 0x6c, 0x65, 0x67, 0x72, 0x61, 0x6d, 0x5f, 0x61, 0x70, 0x70, 0x5f, 0x64, 0x61,
-	0x74, 0x61, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0f, 0x74, 0x65, 0x6c, 0x65, 0x67, 0x72,
-	0x61, 0x6d, 0x41, 0x70, 0x70, 0x44, 0x61, 0x74, 0x61, 0x12, 0x39, 0x0a, 0x04, 0x76, 0x61, 0x72,
-	0x73, 0x18, 0x04, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x25, 0x2e, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x67,
-	0x2e, 0x61, 0x70, 0x69, 0x2e, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x54, 0x65, 0x6c, 0x65,
-	0x67, 0x72, 0x61, 0x6d, 0x2e, 0x56, 0x61, 0x72, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x04,
-	0x76, 0x61, 0x72, 0x73, 0x1a, 0x37, 0x0a, 0x09, 0x56, 0x61, 0x72, 0x73, 0x45, 0x6e, 0x74, 0x72,
-	0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03,
-	0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0x7e, 0x0a,
-	0x16, 0x41, 0x75, 0x74, 0x68, 0x65, 0x6e, 0x74, 0x69, 0x63, 0x61, 0x74, 0x65, 0x45, 0x76, 0x6d,
-	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x30, 0x0a, 0x07, 0x61, 0x63, 0x63, 0x6f, 0x75,
-	0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x16, 0x2e, 0x6c, 0x61, 0x79, 0x65, 0x72,
-	0x67, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x45, 0x76, 0x6d,
-	0x52, 0x07, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x32, 0x0a, 0x06, 0x63, 0x72, 0x65,
-	0x61, 0x74, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
-	0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x42, 0x6f, 0x6f, 0x6c,
-	0x56, 0x61, 0x6c, 0x75, 0x65, 0x52, 0x06, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x22, 0xdd, 0x01,
-	0x0a, 0x0a, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x45, 0x76, 0x6d, 0x12, 0x1f, 0x0a, 0x0b,
-	0x65, 0x76, 0x6d, 0x5f, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x0a, 0x65, 0x76, 0x6d, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x12, 0x1a, 0x0a,
-	0x08, 0x75, 0x73, 0x65, 0x72, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x08, 0x75, 0x73, 0x65, 0x72, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x23, 0x0a, 0x0d, 0x65, 0x76, 0x6d,
-	0x5f, 0x73, 0x69, 0x67, 0x6e, 0x61, 0x74, 0x75, 0x72, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x0c, 0x65, 0x76, 0x6d, 0x53, 0x69, 0x67, 0x6e, 0x61, 0x74, 0x75, 0x72, 0x65, 0x12, 0x34,
-	0x0a, 0x04, 0x76, 0x61, 0x72, 0x73, 0x18, 0x04, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x20, 0x2e, 0x6c,
-	0x61, 0x79, 0x65, 0x72, 0x67, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e,
-	0x74, 0x45, 0x76, 0x6d, 0x2e, 0x56, 0x61, 0x72, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x04,
-	0x76, 0x61, 0x72, 0x73, 0x1a, 0x37, 0x0a, 0x09, 0x56, 0x61, 0x72, 0x73, 0x45, 0x6e, 0x74, 0x72,
-	0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03,
-	0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x2a, 0x6f, 0x0a,
-	0x0d, 0x53, 0x74, 0x6f, 0x72, 0x65, 0x50, 0x72, 0x6f, 0x76, 0x69, 0x64, 0x65, 0x72, 0x12, 0x13,
-	0x0a, 0x0f, 0x41, 0x50, 0x50, 0x4c, 0x45, 0x5f, 0x41, 0x50, 0x50, 0x5f, 0x53, 0x54, 0x4f, 0x52,
-	0x45, 0x10, 0x00, 0x12, 0x15, 0x0a, 0x11, 0x47, 0x4f, 0x4f, 0x47, 0x4c, 0x45, 0x5f, 0x50, 0x4c,
-	0x41, 0x59, 0x5f, 0x53, 0x54, 0x4f, 0x52, 0x45, 0x10, 0x01, 0x12, 0x16, 0x0a, 0x12, 0x48, 0x55,
-	0x41, 0x57, 0x45, 0x49, 0x5f, 0x41, 0x50, 0x50, 0x5f, 0x47, 0x41, 0x4c, 0x4c, 0x45, 0x52, 0x59,
-	0x10, 0x02, 0x12, 0x1a, 0x0a, 0x16, 0x46, 0x41, 0x43, 0x45, 0x42, 0x4f, 0x4f, 0x4b, 0x5f, 0x49,
-	0x4e, 0x53, 0x54, 0x41, 0x4e, 0x54, 0x5f, 0x53, 0x54, 0x4f, 0x52, 0x45, 0x10, 0x03, 0x2a, 0x3c,
-	0x0a, 0x10, 0x53, 0x74, 0x6f, 0x72, 0x65, 0x45, 0x6e, 0x76, 0x69, 0x72, 0x6f, 0x6e, 0x6d, 0x65,
-	0x6e, 0x74, 0x12, 0x0b, 0x0a, 0x07, 0x55, 0x4e, 0x4b, 0x4e, 0x4f, 0x57, 0x4e, 0x10, 0x00, 0x12,
-	0x0b, 0x0a, 0x07, 0x53, 0x41, 0x4e, 0x44, 0x42, 0x4f, 0x58, 0x10, 0x01, 0x12, 0x0e, 0x0a, 0x0a,
-	0x50, 0x52, 0x4f, 0x44, 0x55, 0x43, 0x54, 0x49, 0x4f, 0x4e, 0x10, 0x02, 0x2a, 0x4c, 0x0a, 0x08,
-	0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x12, 0x0f, 0x0a, 0x0b, 0x4e, 0x4f, 0x5f, 0x4f,
-	0x56, 0x45, 0x52, 0x52, 0x49, 0x44, 0x45, 0x10, 0x00, 0x12, 0x08, 0x0a, 0x04, 0x42, 0x45, 0x53,
-	0x54, 0x10, 0x01, 0x12, 0x07, 0x0a, 0x03, 0x53, 0x45, 0x54, 0x10, 0x02, 0x12, 0x0d, 0x0a, 0x09,
-	0x49, 0x4e, 0x43, 0x52, 0x45, 0x4d, 0x45, 0x4e, 0x54, 0x10, 0x03, 0x12, 0x0d, 0x0a, 0x09, 0x44,
-	0x45, 0x43, 0x52, 0x45, 0x4d, 0x45, 0x4e, 0x54, 0x10, 0x04, 0x42, 0x61, 0x0a, 0x16, 0x63, 0x6f,
-	0x6d, 0x2e, 0x75, 0x32, 0x75, 0x6c, 0x61, 0x62, 0x73, 0x2e, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x67,
-	0x2e, 0x61, 0x70, 0x69, 0x42, 0x09, 0x4c, 0x61, 0x79, 0x65, 0x72, 0x47, 0x41, 0x70, 0x69, 0x50,
-	0x01, 0x5a, 0x28, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x75, 0x32,
-	0x75, 0x2d, 0x6c, 0x61, 0x62, 0x73, 0x2f, 0x67, 0x6f, 0x2d, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x67,
-	0x2d, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2f, 0x61, 0x70, 0x69, 0xaa, 0x02, 0x0f, 0x4c, 0x61,
-	0x79, 0x65, 0x72, 0x47, 0x2e, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x62, 0x06, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x61, 0x6c, 0x75, 0x65, 0x52, 0x06, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x22, 0xea, 0x01, 0x0a,
+	0x0e, 0x41, 0x75, 0x74, 0x68, 0x65, 0x6e, 0x74, 0x69, 0x63, 0x61, 0x74, 0x65, 0x55, 0x41, 0x12,
+	0x10, 0x0a, 0x03, 0x6a, 0x77, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6a, 0x77,
+	0x74, 0x12, 0x1f, 0x0a, 0x0b, 0x72, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x5f, 0x6a, 0x77, 0x74,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x72, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x4a,
+	0x77, 0x74, 0x12, 0x38, 0x0a, 0x04, 0x76, 0x61, 0x72, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0b,
+	0x32, 0x24, 0x2e, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x67, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x41, 0x75,
+	0x74, 0x68, 0x65, 0x6e, 0x74, 0x69, 0x63, 0x61, 0x74, 0x65, 0x55, 0x41, 0x2e, 0x56, 0x61, 0x72,
+	0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x04, 0x76, 0x61, 0x72, 0x73, 0x12, 0x32, 0x0a, 0x06,
+	0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67,
+	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x42,
+	0x6f, 0x6f, 0x6c, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x52, 0x06, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65,
+	0x1a, 0x37, 0x0a, 0x09, 0x56, 0x61, 0x72, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a,
+	0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12,
+	0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05,
+	0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0xee, 0x01, 0x0a, 0x0f, 0x41, 0x63,
+	0x63, 0x6f, 0x75, 0x6e, 0x74, 0x54, 0x65, 0x6c, 0x65, 0x67, 0x72, 0x61, 0x6d, 0x12, 0x1f, 0x0a,
+	0x0b, 0x74, 0x65, 0x6c, 0x65, 0x67, 0x72, 0x61, 0x6d, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x0a, 0x74, 0x65, 0x6c, 0x65, 0x67, 0x72, 0x61, 0x6d, 0x49, 0x64, 0x12, 0x1a,
+	0x0a, 0x08, 0x75, 0x73, 0x65, 0x72, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x08, 0x75, 0x73, 0x65, 0x72, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x2a, 0x0a, 0x11, 0x74, 0x65,
+	0x6c, 0x65, 0x67, 0x72, 0x61, 0x6d, 0x5f, 0x61, 0x70, 0x70, 0x5f, 0x64, 0x61, 0x74, 0x61, 0x18,
+	0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0f, 0x74, 0x65, 0x6c, 0x65, 0x67, 0x72, 0x61, 0x6d, 0x41,
+	0x70, 0x70, 0x44, 0x61, 0x74, 0x61, 0x12, 0x39, 0x0a, 0x04, 0x76, 0x61, 0x72, 0x73, 0x18, 0x04,
+	0x20, 0x03, 0x28, 0x0b, 0x32, 0x25, 0x2e, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x67, 0x2e, 0x61, 0x70,
+	0x69, 0x2e, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x54, 0x65, 0x6c, 0x65, 0x67, 0x72, 0x61,
+	0x6d, 0x2e, 0x56, 0x61, 0x72, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x04, 0x76, 0x61, 0x72,
+	0x73, 0x1a, 0x37, 0x0a, 0x09, 0x56, 0x61, 0x72, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10,
+	0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79,
+	0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0x7e, 0x0a, 0x16, 0x41, 0x75,
+	0x74, 0x68, 0x65, 0x6e, 0x74, 0x69, 0x63, 0x61, 0x74, 0x65, 0x45, 0x76, 0x6d, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x12, 0x30, 0x0a, 0x07, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x16, 0x2e, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x67, 0x2e, 0x61,
+	0x70, 0x69, 0x2e, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x45, 0x76, 0x6d, 0x52, 0x07, 0x61,
+	0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x32, 0x0a, 0x06, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x42, 0x6f, 0x6f, 0x6c, 0x56, 0x61, 0x6c,
+	0x75, 0x65, 0x52, 0x06, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x22, 0xdd, 0x01, 0x0a, 0x0a, 0x41,
+	0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x45, 0x76, 0x6d, 0x12, 0x1f, 0x0a, 0x0b, 0x65, 0x76, 0x6d,
+	0x5f, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a,
+	0x65, 0x76, 0x6d, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x12, 0x1a, 0x0a, 0x08, 0x75, 0x73,
+	0x65, 0x72, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x75, 0x73,
+	0x65, 0x72, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x23, 0x0a, 0x0d, 0x65, 0x76, 0x6d, 0x5f, 0x73, 0x69,
+	0x67, 0x6e, 0x61, 0x74, 0x75, 0x72, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x65,
+	0x76, 0x6d, 0x53, 0x69, 0x67, 0x6e, 0x61, 0x74, 0x75, 0x72, 0x65, 0x12, 0x34, 0x0a, 0x04, 0x76,
+	0x61, 0x72, 0x73, 0x18, 0x04, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x20, 0x2e, 0x6c, 0x61, 0x79, 0x65,
+	0x72, 0x67, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x45, 0x76,
+	0x6d, 0x2e, 0x56, 0x61, 0x72, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x04, 0x76, 0x61, 0x72,
+	0x73, 0x1a, 0x37, 0x0a, 0x09, 0x56, 0x61, 0x72, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10,
+	0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79,
+	0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x2a, 0x6f, 0x0a, 0x0d, 0x53, 0x74,
+	0x6f, 0x72, 0x65, 0x50, 0x72, 0x6f, 0x76, 0x69, 0x64, 0x65, 0x72, 0x12, 0x13, 0x0a, 0x0f, 0x41,
+	0x50, 0x50, 0x4c, 0x45, 0x5f, 0x41, 0x50, 0x50, 0x5f, 0x53, 0x54, 0x4f, 0x52, 0x45, 0x10, 0x00,
+	0x12, 0x15, 0x0a, 0x11, 0x47, 0x4f, 0x4f, 0x47, 0x4c, 0x45, 0x5f, 0x50, 0x4c, 0x41, 0x59, 0x5f,
+	0x53, 0x54, 0x4f, 0x52, 0x45, 0x10, 0x01, 0x12, 0x16, 0x0a, 0x12, 0x48, 0x55, 0x41, 0x57, 0x45,
+	0x49, 0x5f, 0x41, 0x50, 0x50, 0x5f, 0x47, 0x41, 0x4c, 0x4c, 0x45, 0x52, 0x59, 0x10, 0x02, 0x12,
+	0x1a, 0x0a, 0x16, 0x46, 0x41, 0x43, 0x45, 0x42, 0x4f, 0x4f, 0x4b, 0x5f, 0x49, 0x4e, 0x53, 0x54,
+	0x41, 0x4e, 0x54, 0x5f, 0x53, 0x54, 0x4f, 0x52, 0x45, 0x10, 0x03, 0x2a, 0x3c, 0x0a, 0x10, 0x53,
+	0x74, 0x6f, 0x72, 0x65, 0x45, 0x6e, 0x76, 0x69, 0x72, 0x6f, 0x6e, 0x6d, 0x65, 0x6e, 0x74, 0x12,
+	0x0b, 0x0a, 0x07, 0x55, 0x4e, 0x4b, 0x4e, 0x4f, 0x57, 0x4e, 0x10, 0x00, 0x12, 0x0b, 0x0a, 0x07,
+	0x53, 0x41, 0x4e, 0x44, 0x42, 0x4f, 0x58, 0x10, 0x01, 0x12, 0x0e, 0x0a, 0x0a, 0x50, 0x52, 0x4f,
+	0x44, 0x55, 0x43, 0x54, 0x49, 0x4f, 0x4e, 0x10, 0x02, 0x2a, 0x4c, 0x0a, 0x08, 0x4f, 0x70, 0x65,
+	0x72, 0x61, 0x74, 0x6f, 0x72, 0x12, 0x0f, 0x0a, 0x0b, 0x4e, 0x4f, 0x5f, 0x4f, 0x56, 0x45, 0x52,
+	0x52, 0x49, 0x44, 0x45, 0x10, 0x00, 0x12, 0x08, 0x0a, 0x04, 0x42, 0x45, 0x53, 0x54, 0x10, 0x01,
+	0x12, 0x07, 0x0a, 0x03, 0x53, 0x45, 0x54, 0x10, 0x02, 0x12, 0x0d, 0x0a, 0x09, 0x49, 0x4e, 0x43,
+	0x52, 0x45, 0x4d, 0x45, 0x4e, 0x54, 0x10, 0x03, 0x12, 0x0d, 0x0a, 0x09, 0x44, 0x45, 0x43, 0x52,
+	0x45, 0x4d, 0x45, 0x4e, 0x54, 0x10, 0x04, 0x42, 0x61, 0x0a, 0x16, 0x63, 0x6f, 0x6d, 0x2e, 0x75,
+	0x32, 0x75, 0x6c, 0x61, 0x62, 0x73, 0x2e, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x67, 0x2e, 0x61, 0x70,
+	0x69, 0x42, 0x09, 0x4c, 0x61, 0x79, 0x65, 0x72, 0x47, 0x41, 0x70, 0x69, 0x50, 0x01, 0x5a, 0x28,
+	0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x75, 0x32, 0x75, 0x2d, 0x6c,
+	0x61, 0x62, 0x73, 0x2f, 0x67, 0x6f, 0x2d, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x67, 0x2d, 0x63, 0x6f,
+	0x6d, 0x6d, 0x6f, 0x6e, 0x2f, 0x61, 0x70, 0x69, 0xaa, 0x02, 0x0f, 0x4c, 0x61, 0x79, 0x65, 0x72,
+	0x47, 0x2e, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x33,
 }
 
 var (
@@ -10875,7 +10961,7 @@ func file_api_proto_rawDescGZIP() []byte {
 }
 
 var file_api_proto_enumTypes = make([]protoimpl.EnumInfo, 6)
-var file_api_proto_msgTypes = make([]protoimpl.MessageInfo, 142)
+var file_api_proto_msgTypes = make([]protoimpl.MessageInfo, 144)
 var file_api_proto_goTypes = []any{
 	(StoreProvider)(0),                               // 0: layerg.api.StoreProvider
 	(StoreEnvironment)(0),                            // 1: layerg.api.StoreEnvironment
@@ -11000,231 +11086,235 @@ var file_api_proto_goTypes = []any{
 	(*WriteStorageObjectsRequest)(nil),               // 120: layerg.api.WriteStorageObjectsRequest
 	(*WriteTournamentRecordRequest)(nil),             // 121: layerg.api.WriteTournamentRecordRequest
 	(*AuthenticateTelegramRequest)(nil),              // 122: layerg.api.AuthenticateTelegramRequest
-	(*AccountTelegram)(nil),                          // 123: layerg.api.AccountTelegram
-	(*AuthenticateEvmRequest)(nil),                   // 124: layerg.api.AuthenticateEvmRequest
-	(*AccountEvm)(nil),                               // 125: layerg.api.AccountEvm
-	nil,                                              // 126: layerg.api.Request.HeaderEntry
-	nil,                                              // 127: layerg.api.Request.QueryEntry
-	nil,                                              // 128: layerg.api.ResponseWriter.HeaderEntry
-	nil,                                              // 129: layerg.api.AccountRefresh.VarsEntry
-	nil,                                              // 130: layerg.api.AccountApple.VarsEntry
-	nil,                                              // 131: layerg.api.AccountCustom.VarsEntry
-	nil,                                              // 132: layerg.api.AccountDevice.VarsEntry
-	nil,                                              // 133: layerg.api.AccountEmail.VarsEntry
-	nil,                                              // 134: layerg.api.AccountFacebook.VarsEntry
-	nil,                                              // 135: layerg.api.AccountFacebookInstantGame.VarsEntry
-	nil,                                              // 136: layerg.api.AccountGameCenter.VarsEntry
-	nil,                                              // 137: layerg.api.AccountGoogle.VarsEntry
-	nil,                                              // 138: layerg.api.AccountSteam.VarsEntry
-	nil,                                              // 139: layerg.api.SessionRefreshRequest.VarsEntry
-	nil,                                              // 140: layerg.api.Event.PropertiesEntry
-	(*FriendsOfFriendsList_FriendOfFriend)(nil),      // 141: layerg.api.FriendsOfFriendsList.FriendOfFriend
-	(*GroupUserList_GroupUser)(nil),                  // 142: layerg.api.GroupUserList.GroupUser
-	(*UserGroupList_UserGroup)(nil),                  // 143: layerg.api.UserGroupList.UserGroup
-	(*WriteLeaderboardRecordRequest_LeaderboardRecordWrite)(nil), // 144: layerg.api.WriteLeaderboardRecordRequest.LeaderboardRecordWrite
-	(*WriteTournamentRecordRequest_TournamentRecordWrite)(nil),   // 145: layerg.api.WriteTournamentRecordRequest.TournamentRecordWrite
-	nil,                            // 146: layerg.api.AccountTelegram.VarsEntry
-	nil,                            // 147: layerg.api.AccountEvm.VarsEntry
-	(*timestamppb.Timestamp)(nil),  // 148: google.protobuf.Timestamp
-	(*wrapperspb.BoolValue)(nil),   // 149: google.protobuf.BoolValue
-	(*wrapperspb.Int32Value)(nil),  // 150: google.protobuf.Int32Value
-	(*wrapperspb.StringValue)(nil), // 151: google.protobuf.StringValue
-	(*wrapperspb.UInt32Value)(nil), // 152: google.protobuf.UInt32Value
-	(*wrapperspb.Int64Value)(nil),  // 153: google.protobuf.Int64Value
+	(*AuthenticateUA)(nil),                           // 123: layerg.api.AuthenticateUA
+	(*AccountTelegram)(nil),                          // 124: layerg.api.AccountTelegram
+	(*AuthenticateEvmRequest)(nil),                   // 125: layerg.api.AuthenticateEvmRequest
+	(*AccountEvm)(nil),                               // 126: layerg.api.AccountEvm
+	nil,                                              // 127: layerg.api.Request.HeaderEntry
+	nil,                                              // 128: layerg.api.Request.QueryEntry
+	nil,                                              // 129: layerg.api.ResponseWriter.HeaderEntry
+	nil,                                              // 130: layerg.api.AccountRefresh.VarsEntry
+	nil,                                              // 131: layerg.api.AccountApple.VarsEntry
+	nil,                                              // 132: layerg.api.AccountCustom.VarsEntry
+	nil,                                              // 133: layerg.api.AccountDevice.VarsEntry
+	nil,                                              // 134: layerg.api.AccountEmail.VarsEntry
+	nil,                                              // 135: layerg.api.AccountFacebook.VarsEntry
+	nil,                                              // 136: layerg.api.AccountFacebookInstantGame.VarsEntry
+	nil,                                              // 137: layerg.api.AccountGameCenter.VarsEntry
+	nil,                                              // 138: layerg.api.AccountGoogle.VarsEntry
+	nil,                                              // 139: layerg.api.AccountSteam.VarsEntry
+	nil,                                              // 140: layerg.api.SessionRefreshRequest.VarsEntry
+	nil,                                              // 141: layerg.api.Event.PropertiesEntry
+	(*FriendsOfFriendsList_FriendOfFriend)(nil),      // 142: layerg.api.FriendsOfFriendsList.FriendOfFriend
+	(*GroupUserList_GroupUser)(nil),                  // 143: layerg.api.GroupUserList.GroupUser
+	(*UserGroupList_UserGroup)(nil),                  // 144: layerg.api.UserGroupList.UserGroup
+	(*WriteLeaderboardRecordRequest_LeaderboardRecordWrite)(nil), // 145: layerg.api.WriteLeaderboardRecordRequest.LeaderboardRecordWrite
+	(*WriteTournamentRecordRequest_TournamentRecordWrite)(nil),   // 146: layerg.api.WriteTournamentRecordRequest.TournamentRecordWrite
+	nil,                            // 147: layerg.api.AuthenticateUA.VarsEntry
+	nil,                            // 148: layerg.api.AccountTelegram.VarsEntry
+	nil,                            // 149: layerg.api.AccountEvm.VarsEntry
+	(*timestamppb.Timestamp)(nil),  // 150: google.protobuf.Timestamp
+	(*wrapperspb.BoolValue)(nil),   // 151: google.protobuf.BoolValue
+	(*wrapperspb.Int32Value)(nil),  // 152: google.protobuf.Int32Value
+	(*wrapperspb.StringValue)(nil), // 153: google.protobuf.StringValue
+	(*wrapperspb.UInt32Value)(nil), // 154: google.protobuf.UInt32Value
+	(*wrapperspb.Int64Value)(nil),  // 155: google.protobuf.Int64Value
 }
 var file_api_proto_depIdxs = []int32{
-	126, // 0: layerg.api.Request.header:type_name -> layerg.api.Request.HeaderEntry
-	127, // 1: layerg.api.Request.query:type_name -> layerg.api.Request.QueryEntry
-	128, // 2: layerg.api.ResponseWriter.header:type_name -> layerg.api.ResponseWriter.HeaderEntry
+	127, // 0: layerg.api.Request.header:type_name -> layerg.api.Request.HeaderEntry
+	128, // 1: layerg.api.Request.query:type_name -> layerg.api.Request.QueryEntry
+	129, // 2: layerg.api.ResponseWriter.header:type_name -> layerg.api.ResponseWriter.HeaderEntry
 	103, // 3: layerg.api.Account.user:type_name -> layerg.api.User
 	13,  // 4: layerg.api.Account.devices:type_name -> layerg.api.AccountDevice
-	148, // 5: layerg.api.Account.verify_time:type_name -> google.protobuf.Timestamp
-	148, // 6: layerg.api.Account.disable_time:type_name -> google.protobuf.Timestamp
-	129, // 7: layerg.api.AccountRefresh.vars:type_name -> layerg.api.AccountRefresh.VarsEntry
-	130, // 8: layerg.api.AccountApple.vars:type_name -> layerg.api.AccountApple.VarsEntry
-	131, // 9: layerg.api.AccountCustom.vars:type_name -> layerg.api.AccountCustom.VarsEntry
-	132, // 10: layerg.api.AccountDevice.vars:type_name -> layerg.api.AccountDevice.VarsEntry
-	133, // 11: layerg.api.AccountEmail.vars:type_name -> layerg.api.AccountEmail.VarsEntry
-	134, // 12: layerg.api.AccountFacebook.vars:type_name -> layerg.api.AccountFacebook.VarsEntry
-	135, // 13: layerg.api.AccountFacebookInstantGame.vars:type_name -> layerg.api.AccountFacebookInstantGame.VarsEntry
-	136, // 14: layerg.api.AccountGameCenter.vars:type_name -> layerg.api.AccountGameCenter.VarsEntry
-	137, // 15: layerg.api.AccountGoogle.vars:type_name -> layerg.api.AccountGoogle.VarsEntry
-	138, // 16: layerg.api.AccountSteam.vars:type_name -> layerg.api.AccountSteam.VarsEntry
-	139, // 17: layerg.api.SessionRefreshRequest.vars:type_name -> layerg.api.SessionRefreshRequest.VarsEntry
+	150, // 5: layerg.api.Account.verify_time:type_name -> google.protobuf.Timestamp
+	150, // 6: layerg.api.Account.disable_time:type_name -> google.protobuf.Timestamp
+	130, // 7: layerg.api.AccountRefresh.vars:type_name -> layerg.api.AccountRefresh.VarsEntry
+	131, // 8: layerg.api.AccountApple.vars:type_name -> layerg.api.AccountApple.VarsEntry
+	132, // 9: layerg.api.AccountCustom.vars:type_name -> layerg.api.AccountCustom.VarsEntry
+	133, // 10: layerg.api.AccountDevice.vars:type_name -> layerg.api.AccountDevice.VarsEntry
+	134, // 11: layerg.api.AccountEmail.vars:type_name -> layerg.api.AccountEmail.VarsEntry
+	135, // 12: layerg.api.AccountFacebook.vars:type_name -> layerg.api.AccountFacebook.VarsEntry
+	136, // 13: layerg.api.AccountFacebookInstantGame.vars:type_name -> layerg.api.AccountFacebookInstantGame.VarsEntry
+	137, // 14: layerg.api.AccountGameCenter.vars:type_name -> layerg.api.AccountGameCenter.VarsEntry
+	138, // 15: layerg.api.AccountGoogle.vars:type_name -> layerg.api.AccountGoogle.VarsEntry
+	139, // 16: layerg.api.AccountSteam.vars:type_name -> layerg.api.AccountSteam.VarsEntry
+	140, // 17: layerg.api.SessionRefreshRequest.vars:type_name -> layerg.api.SessionRefreshRequest.VarsEntry
 	11,  // 18: layerg.api.AuthenticateAppleRequest.account:type_name -> layerg.api.AccountApple
-	149, // 19: layerg.api.AuthenticateAppleRequest.create:type_name -> google.protobuf.BoolValue
+	151, // 19: layerg.api.AuthenticateAppleRequest.create:type_name -> google.protobuf.BoolValue
 	12,  // 20: layerg.api.AuthenticateCustomRequest.account:type_name -> layerg.api.AccountCustom
-	149, // 21: layerg.api.AuthenticateCustomRequest.create:type_name -> google.protobuf.BoolValue
+	151, // 21: layerg.api.AuthenticateCustomRequest.create:type_name -> google.protobuf.BoolValue
 	13,  // 22: layerg.api.AuthenticateDeviceRequest.account:type_name -> layerg.api.AccountDevice
-	149, // 23: layerg.api.AuthenticateDeviceRequest.create:type_name -> google.protobuf.BoolValue
+	151, // 23: layerg.api.AuthenticateDeviceRequest.create:type_name -> google.protobuf.BoolValue
 	14,  // 24: layerg.api.AuthenticateEmailRequest.account:type_name -> layerg.api.AccountEmail
-	149, // 25: layerg.api.AuthenticateEmailRequest.create:type_name -> google.protobuf.BoolValue
+	151, // 25: layerg.api.AuthenticateEmailRequest.create:type_name -> google.protobuf.BoolValue
 	15,  // 26: layerg.api.AuthenticateFacebookRequest.account:type_name -> layerg.api.AccountFacebook
-	149, // 27: layerg.api.AuthenticateFacebookRequest.create:type_name -> google.protobuf.BoolValue
-	149, // 28: layerg.api.AuthenticateFacebookRequest.sync:type_name -> google.protobuf.BoolValue
+	151, // 27: layerg.api.AuthenticateFacebookRequest.create:type_name -> google.protobuf.BoolValue
+	151, // 28: layerg.api.AuthenticateFacebookRequest.sync:type_name -> google.protobuf.BoolValue
 	16,  // 29: layerg.api.AuthenticateFacebookInstantGameRequest.account:type_name -> layerg.api.AccountFacebookInstantGame
-	149, // 30: layerg.api.AuthenticateFacebookInstantGameRequest.create:type_name -> google.protobuf.BoolValue
+	151, // 30: layerg.api.AuthenticateFacebookInstantGameRequest.create:type_name -> google.protobuf.BoolValue
 	17,  // 31: layerg.api.AuthenticateGameCenterRequest.account:type_name -> layerg.api.AccountGameCenter
-	149, // 32: layerg.api.AuthenticateGameCenterRequest.create:type_name -> google.protobuf.BoolValue
+	151, // 32: layerg.api.AuthenticateGameCenterRequest.create:type_name -> google.protobuf.BoolValue
 	18,  // 33: layerg.api.AuthenticateGoogleRequest.account:type_name -> layerg.api.AccountGoogle
-	149, // 34: layerg.api.AuthenticateGoogleRequest.create:type_name -> google.protobuf.BoolValue
+	151, // 34: layerg.api.AuthenticateGoogleRequest.create:type_name -> google.protobuf.BoolValue
 	19,  // 35: layerg.api.AuthenticateSteamRequest.account:type_name -> layerg.api.AccountSteam
-	149, // 36: layerg.api.AuthenticateSteamRequest.create:type_name -> google.protobuf.BoolValue
-	149, // 37: layerg.api.AuthenticateSteamRequest.sync:type_name -> google.protobuf.BoolValue
-	150, // 38: layerg.api.ChannelMessage.code:type_name -> google.protobuf.Int32Value
-	148, // 39: layerg.api.ChannelMessage.create_time:type_name -> google.protobuf.Timestamp
-	148, // 40: layerg.api.ChannelMessage.update_time:type_name -> google.protobuf.Timestamp
-	149, // 41: layerg.api.ChannelMessage.persistent:type_name -> google.protobuf.BoolValue
+	151, // 36: layerg.api.AuthenticateSteamRequest.create:type_name -> google.protobuf.BoolValue
+	151, // 37: layerg.api.AuthenticateSteamRequest.sync:type_name -> google.protobuf.BoolValue
+	152, // 38: layerg.api.ChannelMessage.code:type_name -> google.protobuf.Int32Value
+	150, // 39: layerg.api.ChannelMessage.create_time:type_name -> google.protobuf.Timestamp
+	150, // 40: layerg.api.ChannelMessage.update_time:type_name -> google.protobuf.Timestamp
+	151, // 41: layerg.api.ChannelMessage.persistent:type_name -> google.protobuf.BoolValue
 	35,  // 42: layerg.api.ChannelMessageList.messages:type_name -> layerg.api.ChannelMessage
 	43,  // 43: layerg.api.DeleteStorageObjectsRequest.object_ids:type_name -> layerg.api.DeleteStorageObjectId
-	140, // 44: layerg.api.Event.properties:type_name -> layerg.api.Event.PropertiesEntry
-	148, // 45: layerg.api.Event.timestamp:type_name -> google.protobuf.Timestamp
+	141, // 44: layerg.api.Event.properties:type_name -> layerg.api.Event.PropertiesEntry
+	150, // 45: layerg.api.Event.timestamp:type_name -> google.protobuf.Timestamp
 	103, // 46: layerg.api.Friend.user:type_name -> layerg.api.User
-	150, // 47: layerg.api.Friend.state:type_name -> google.protobuf.Int32Value
-	148, // 48: layerg.api.Friend.update_time:type_name -> google.protobuf.Timestamp
+	152, // 47: layerg.api.Friend.state:type_name -> google.protobuf.Int32Value
+	150, // 48: layerg.api.Friend.update_time:type_name -> google.protobuf.Timestamp
 	46,  // 49: layerg.api.FriendList.friends:type_name -> layerg.api.Friend
-	141, // 50: layerg.api.FriendsOfFriendsList.friends_of_friends:type_name -> layerg.api.FriendsOfFriendsList.FriendOfFriend
-	149, // 51: layerg.api.Group.open:type_name -> google.protobuf.BoolValue
-	148, // 52: layerg.api.Group.create_time:type_name -> google.protobuf.Timestamp
-	148, // 53: layerg.api.Group.update_time:type_name -> google.protobuf.Timestamp
+	142, // 50: layerg.api.FriendsOfFriendsList.friends_of_friends:type_name -> layerg.api.FriendsOfFriendsList.FriendOfFriend
+	151, // 51: layerg.api.Group.open:type_name -> google.protobuf.BoolValue
+	150, // 52: layerg.api.Group.create_time:type_name -> google.protobuf.Timestamp
+	150, // 53: layerg.api.Group.update_time:type_name -> google.protobuf.Timestamp
 	51,  // 54: layerg.api.GroupList.groups:type_name -> layerg.api.Group
-	142, // 55: layerg.api.GroupUserList.group_users:type_name -> layerg.api.GroupUserList.GroupUser
+	143, // 55: layerg.api.GroupUserList.group_users:type_name -> layerg.api.GroupUserList.GroupUser
 	15,  // 56: layerg.api.ImportFacebookFriendsRequest.account:type_name -> layerg.api.AccountFacebook
-	149, // 57: layerg.api.ImportFacebookFriendsRequest.reset:type_name -> google.protobuf.BoolValue
+	151, // 57: layerg.api.ImportFacebookFriendsRequest.reset:type_name -> google.protobuf.BoolValue
 	19,  // 58: layerg.api.ImportSteamFriendsRequest.account:type_name -> layerg.api.AccountSteam
-	149, // 59: layerg.api.ImportSteamFriendsRequest.reset:type_name -> google.protobuf.BoolValue
+	151, // 59: layerg.api.ImportSteamFriendsRequest.reset:type_name -> google.protobuf.BoolValue
 	2,   // 60: layerg.api.Leaderboard.operator:type_name -> layerg.api.Operator
-	148, // 61: layerg.api.Leaderboard.create_time:type_name -> google.protobuf.Timestamp
+	150, // 61: layerg.api.Leaderboard.create_time:type_name -> google.protobuf.Timestamp
 	59,  // 62: layerg.api.LeaderboardList.leaderboards:type_name -> layerg.api.Leaderboard
-	151, // 63: layerg.api.LeaderboardRecord.username:type_name -> google.protobuf.StringValue
-	148, // 64: layerg.api.LeaderboardRecord.create_time:type_name -> google.protobuf.Timestamp
-	148, // 65: layerg.api.LeaderboardRecord.update_time:type_name -> google.protobuf.Timestamp
-	148, // 66: layerg.api.LeaderboardRecord.expiry_time:type_name -> google.protobuf.Timestamp
+	153, // 63: layerg.api.LeaderboardRecord.username:type_name -> google.protobuf.StringValue
+	150, // 64: layerg.api.LeaderboardRecord.create_time:type_name -> google.protobuf.Timestamp
+	150, // 65: layerg.api.LeaderboardRecord.update_time:type_name -> google.protobuf.Timestamp
+	150, // 66: layerg.api.LeaderboardRecord.expiry_time:type_name -> google.protobuf.Timestamp
 	61,  // 67: layerg.api.LeaderboardRecordList.records:type_name -> layerg.api.LeaderboardRecord
 	61,  // 68: layerg.api.LeaderboardRecordList.owner_records:type_name -> layerg.api.LeaderboardRecord
 	15,  // 69: layerg.api.LinkFacebookRequest.account:type_name -> layerg.api.AccountFacebook
-	149, // 70: layerg.api.LinkFacebookRequest.sync:type_name -> google.protobuf.BoolValue
+	151, // 70: layerg.api.LinkFacebookRequest.sync:type_name -> google.protobuf.BoolValue
 	19,  // 71: layerg.api.LinkSteamRequest.account:type_name -> layerg.api.AccountSteam
-	149, // 72: layerg.api.LinkSteamRequest.sync:type_name -> google.protobuf.BoolValue
-	150, // 73: layerg.api.ListChannelMessagesRequest.limit:type_name -> google.protobuf.Int32Value
-	149, // 74: layerg.api.ListChannelMessagesRequest.forward:type_name -> google.protobuf.BoolValue
-	150, // 75: layerg.api.ListFriendsRequest.limit:type_name -> google.protobuf.Int32Value
-	150, // 76: layerg.api.ListFriendsRequest.state:type_name -> google.protobuf.Int32Value
-	150, // 77: layerg.api.ListFriendsOfFriendsRequest.limit:type_name -> google.protobuf.Int32Value
-	150, // 78: layerg.api.ListGroupsRequest.limit:type_name -> google.protobuf.Int32Value
-	150, // 79: layerg.api.ListGroupsRequest.members:type_name -> google.protobuf.Int32Value
-	149, // 80: layerg.api.ListGroupsRequest.open:type_name -> google.protobuf.BoolValue
-	150, // 81: layerg.api.ListGroupUsersRequest.limit:type_name -> google.protobuf.Int32Value
-	150, // 82: layerg.api.ListGroupUsersRequest.state:type_name -> google.protobuf.Int32Value
-	152, // 83: layerg.api.ListLeaderboardRecordsAroundOwnerRequest.limit:type_name -> google.protobuf.UInt32Value
-	153, // 84: layerg.api.ListLeaderboardRecordsAroundOwnerRequest.expiry:type_name -> google.protobuf.Int64Value
-	150, // 85: layerg.api.ListLeaderboardRecordsRequest.limit:type_name -> google.protobuf.Int32Value
-	153, // 86: layerg.api.ListLeaderboardRecordsRequest.expiry:type_name -> google.protobuf.Int64Value
-	150, // 87: layerg.api.ListMatchesRequest.limit:type_name -> google.protobuf.Int32Value
-	149, // 88: layerg.api.ListMatchesRequest.authoritative:type_name -> google.protobuf.BoolValue
-	151, // 89: layerg.api.ListMatchesRequest.label:type_name -> google.protobuf.StringValue
-	150, // 90: layerg.api.ListMatchesRequest.min_size:type_name -> google.protobuf.Int32Value
-	150, // 91: layerg.api.ListMatchesRequest.max_size:type_name -> google.protobuf.Int32Value
-	151, // 92: layerg.api.ListMatchesRequest.query:type_name -> google.protobuf.StringValue
-	150, // 93: layerg.api.ListNotificationsRequest.limit:type_name -> google.protobuf.Int32Value
-	150, // 94: layerg.api.ListStorageObjectsRequest.limit:type_name -> google.protobuf.Int32Value
-	150, // 95: layerg.api.ListSubscriptionsRequest.limit:type_name -> google.protobuf.Int32Value
-	152, // 96: layerg.api.ListTournamentRecordsAroundOwnerRequest.limit:type_name -> google.protobuf.UInt32Value
-	153, // 97: layerg.api.ListTournamentRecordsAroundOwnerRequest.expiry:type_name -> google.protobuf.Int64Value
-	150, // 98: layerg.api.ListTournamentRecordsRequest.limit:type_name -> google.protobuf.Int32Value
-	153, // 99: layerg.api.ListTournamentRecordsRequest.expiry:type_name -> google.protobuf.Int64Value
-	152, // 100: layerg.api.ListTournamentsRequest.category_start:type_name -> google.protobuf.UInt32Value
-	152, // 101: layerg.api.ListTournamentsRequest.category_end:type_name -> google.protobuf.UInt32Value
-	152, // 102: layerg.api.ListTournamentsRequest.start_time:type_name -> google.protobuf.UInt32Value
-	152, // 103: layerg.api.ListTournamentsRequest.end_time:type_name -> google.protobuf.UInt32Value
-	150, // 104: layerg.api.ListTournamentsRequest.limit:type_name -> google.protobuf.Int32Value
-	150, // 105: layerg.api.ListUserGroupsRequest.limit:type_name -> google.protobuf.Int32Value
-	150, // 106: layerg.api.ListUserGroupsRequest.state:type_name -> google.protobuf.Int32Value
-	151, // 107: layerg.api.Match.label:type_name -> google.protobuf.StringValue
+	151, // 72: layerg.api.LinkSteamRequest.sync:type_name -> google.protobuf.BoolValue
+	152, // 73: layerg.api.ListChannelMessagesRequest.limit:type_name -> google.protobuf.Int32Value
+	151, // 74: layerg.api.ListChannelMessagesRequest.forward:type_name -> google.protobuf.BoolValue
+	152, // 75: layerg.api.ListFriendsRequest.limit:type_name -> google.protobuf.Int32Value
+	152, // 76: layerg.api.ListFriendsRequest.state:type_name -> google.protobuf.Int32Value
+	152, // 77: layerg.api.ListFriendsOfFriendsRequest.limit:type_name -> google.protobuf.Int32Value
+	152, // 78: layerg.api.ListGroupsRequest.limit:type_name -> google.protobuf.Int32Value
+	152, // 79: layerg.api.ListGroupsRequest.members:type_name -> google.protobuf.Int32Value
+	151, // 80: layerg.api.ListGroupsRequest.open:type_name -> google.protobuf.BoolValue
+	152, // 81: layerg.api.ListGroupUsersRequest.limit:type_name -> google.protobuf.Int32Value
+	152, // 82: layerg.api.ListGroupUsersRequest.state:type_name -> google.protobuf.Int32Value
+	154, // 83: layerg.api.ListLeaderboardRecordsAroundOwnerRequest.limit:type_name -> google.protobuf.UInt32Value
+	155, // 84: layerg.api.ListLeaderboardRecordsAroundOwnerRequest.expiry:type_name -> google.protobuf.Int64Value
+	152, // 85: layerg.api.ListLeaderboardRecordsRequest.limit:type_name -> google.protobuf.Int32Value
+	155, // 86: layerg.api.ListLeaderboardRecordsRequest.expiry:type_name -> google.protobuf.Int64Value
+	152, // 87: layerg.api.ListMatchesRequest.limit:type_name -> google.protobuf.Int32Value
+	151, // 88: layerg.api.ListMatchesRequest.authoritative:type_name -> google.protobuf.BoolValue
+	153, // 89: layerg.api.ListMatchesRequest.label:type_name -> google.protobuf.StringValue
+	152, // 90: layerg.api.ListMatchesRequest.min_size:type_name -> google.protobuf.Int32Value
+	152, // 91: layerg.api.ListMatchesRequest.max_size:type_name -> google.protobuf.Int32Value
+	153, // 92: layerg.api.ListMatchesRequest.query:type_name -> google.protobuf.StringValue
+	152, // 93: layerg.api.ListNotificationsRequest.limit:type_name -> google.protobuf.Int32Value
+	152, // 94: layerg.api.ListStorageObjectsRequest.limit:type_name -> google.protobuf.Int32Value
+	152, // 95: layerg.api.ListSubscriptionsRequest.limit:type_name -> google.protobuf.Int32Value
+	154, // 96: layerg.api.ListTournamentRecordsAroundOwnerRequest.limit:type_name -> google.protobuf.UInt32Value
+	155, // 97: layerg.api.ListTournamentRecordsAroundOwnerRequest.expiry:type_name -> google.protobuf.Int64Value
+	152, // 98: layerg.api.ListTournamentRecordsRequest.limit:type_name -> google.protobuf.Int32Value
+	155, // 99: layerg.api.ListTournamentRecordsRequest.expiry:type_name -> google.protobuf.Int64Value
+	154, // 100: layerg.api.ListTournamentsRequest.category_start:type_name -> google.protobuf.UInt32Value
+	154, // 101: layerg.api.ListTournamentsRequest.category_end:type_name -> google.protobuf.UInt32Value
+	154, // 102: layerg.api.ListTournamentsRequest.start_time:type_name -> google.protobuf.UInt32Value
+	154, // 103: layerg.api.ListTournamentsRequest.end_time:type_name -> google.protobuf.UInt32Value
+	152, // 104: layerg.api.ListTournamentsRequest.limit:type_name -> google.protobuf.Int32Value
+	152, // 105: layerg.api.ListUserGroupsRequest.limit:type_name -> google.protobuf.Int32Value
+	152, // 106: layerg.api.ListUserGroupsRequest.state:type_name -> google.protobuf.Int32Value
+	153, // 107: layerg.api.Match.label:type_name -> google.protobuf.StringValue
 	81,  // 108: layerg.api.MatchList.matches:type_name -> layerg.api.Match
-	148, // 109: layerg.api.MatchmakerCompletionStats.create_time:type_name -> google.protobuf.Timestamp
-	148, // 110: layerg.api.MatchmakerCompletionStats.complete_time:type_name -> google.protobuf.Timestamp
-	148, // 111: layerg.api.MatchmakerStats.oldest_ticket_create_time:type_name -> google.protobuf.Timestamp
+	150, // 109: layerg.api.MatchmakerCompletionStats.create_time:type_name -> google.protobuf.Timestamp
+	150, // 110: layerg.api.MatchmakerCompletionStats.complete_time:type_name -> google.protobuf.Timestamp
+	150, // 111: layerg.api.MatchmakerStats.oldest_ticket_create_time:type_name -> google.protobuf.Timestamp
 	83,  // 112: layerg.api.MatchmakerStats.completions:type_name -> layerg.api.MatchmakerCompletionStats
-	148, // 113: layerg.api.Notification.create_time:type_name -> google.protobuf.Timestamp
+	150, // 113: layerg.api.Notification.create_time:type_name -> google.protobuf.Timestamp
 	85,  // 114: layerg.api.NotificationList.notifications:type_name -> layerg.api.Notification
 	89,  // 115: layerg.api.ReadStorageObjectsRequest.object_ids:type_name -> layerg.api.ReadStorageObjectId
-	148, // 116: layerg.api.StorageObject.create_time:type_name -> google.protobuf.Timestamp
-	148, // 117: layerg.api.StorageObject.update_time:type_name -> google.protobuf.Timestamp
-	148, // 118: layerg.api.StorageObjectAck.create_time:type_name -> google.protobuf.Timestamp
-	148, // 119: layerg.api.StorageObjectAck.update_time:type_name -> google.protobuf.Timestamp
+	150, // 116: layerg.api.StorageObject.create_time:type_name -> google.protobuf.Timestamp
+	150, // 117: layerg.api.StorageObject.update_time:type_name -> google.protobuf.Timestamp
+	150, // 118: layerg.api.StorageObjectAck.create_time:type_name -> google.protobuf.Timestamp
+	150, // 119: layerg.api.StorageObjectAck.update_time:type_name -> google.protobuf.Timestamp
 	94,  // 120: layerg.api.StorageObjectAcks.acks:type_name -> layerg.api.StorageObjectAck
 	93,  // 121: layerg.api.StorageObjects.objects:type_name -> layerg.api.StorageObject
 	93,  // 122: layerg.api.StorageObjectList.objects:type_name -> layerg.api.StorageObject
-	148, // 123: layerg.api.Tournament.create_time:type_name -> google.protobuf.Timestamp
-	148, // 124: layerg.api.Tournament.start_time:type_name -> google.protobuf.Timestamp
-	148, // 125: layerg.api.Tournament.end_time:type_name -> google.protobuf.Timestamp
+	150, // 123: layerg.api.Tournament.create_time:type_name -> google.protobuf.Timestamp
+	150, // 124: layerg.api.Tournament.start_time:type_name -> google.protobuf.Timestamp
+	150, // 125: layerg.api.Tournament.end_time:type_name -> google.protobuf.Timestamp
 	2,   // 126: layerg.api.Tournament.operator:type_name -> layerg.api.Operator
 	98,  // 127: layerg.api.TournamentList.tournaments:type_name -> layerg.api.Tournament
 	61,  // 128: layerg.api.TournamentRecordList.records:type_name -> layerg.api.LeaderboardRecord
 	61,  // 129: layerg.api.TournamentRecordList.owner_records:type_name -> layerg.api.LeaderboardRecord
-	151, // 130: layerg.api.UpdateAccountRequest.username:type_name -> google.protobuf.StringValue
-	151, // 131: layerg.api.UpdateAccountRequest.display_name:type_name -> google.protobuf.StringValue
-	151, // 132: layerg.api.UpdateAccountRequest.avatar_url:type_name -> google.protobuf.StringValue
-	151, // 133: layerg.api.UpdateAccountRequest.lang_tag:type_name -> google.protobuf.StringValue
-	151, // 134: layerg.api.UpdateAccountRequest.location:type_name -> google.protobuf.StringValue
-	151, // 135: layerg.api.UpdateAccountRequest.timezone:type_name -> google.protobuf.StringValue
-	151, // 136: layerg.api.UpdateGroupRequest.name:type_name -> google.protobuf.StringValue
-	151, // 137: layerg.api.UpdateGroupRequest.description:type_name -> google.protobuf.StringValue
-	151, // 138: layerg.api.UpdateGroupRequest.lang_tag:type_name -> google.protobuf.StringValue
-	151, // 139: layerg.api.UpdateGroupRequest.avatar_url:type_name -> google.protobuf.StringValue
-	149, // 140: layerg.api.UpdateGroupRequest.open:type_name -> google.protobuf.BoolValue
-	148, // 141: layerg.api.User.create_time:type_name -> google.protobuf.Timestamp
-	148, // 142: layerg.api.User.update_time:type_name -> google.protobuf.Timestamp
-	143, // 143: layerg.api.UserGroupList.user_groups:type_name -> layerg.api.UserGroupList.UserGroup
+	153, // 130: layerg.api.UpdateAccountRequest.username:type_name -> google.protobuf.StringValue
+	153, // 131: layerg.api.UpdateAccountRequest.display_name:type_name -> google.protobuf.StringValue
+	153, // 132: layerg.api.UpdateAccountRequest.avatar_url:type_name -> google.protobuf.StringValue
+	153, // 133: layerg.api.UpdateAccountRequest.lang_tag:type_name -> google.protobuf.StringValue
+	153, // 134: layerg.api.UpdateAccountRequest.location:type_name -> google.protobuf.StringValue
+	153, // 135: layerg.api.UpdateAccountRequest.timezone:type_name -> google.protobuf.StringValue
+	153, // 136: layerg.api.UpdateGroupRequest.name:type_name -> google.protobuf.StringValue
+	153, // 137: layerg.api.UpdateGroupRequest.description:type_name -> google.protobuf.StringValue
+	153, // 138: layerg.api.UpdateGroupRequest.lang_tag:type_name -> google.protobuf.StringValue
+	153, // 139: layerg.api.UpdateGroupRequest.avatar_url:type_name -> google.protobuf.StringValue
+	151, // 140: layerg.api.UpdateGroupRequest.open:type_name -> google.protobuf.BoolValue
+	150, // 141: layerg.api.User.create_time:type_name -> google.protobuf.Timestamp
+	150, // 142: layerg.api.User.update_time:type_name -> google.protobuf.Timestamp
+	144, // 143: layerg.api.UserGroupList.user_groups:type_name -> layerg.api.UserGroupList.UserGroup
 	103, // 144: layerg.api.Users.users:type_name -> layerg.api.User
-	149, // 145: layerg.api.ValidatePurchaseAppleRequest.persist:type_name -> google.protobuf.BoolValue
-	149, // 146: layerg.api.ValidateSubscriptionAppleRequest.persist:type_name -> google.protobuf.BoolValue
-	149, // 147: layerg.api.ValidatePurchaseGoogleRequest.persist:type_name -> google.protobuf.BoolValue
-	149, // 148: layerg.api.ValidateSubscriptionGoogleRequest.persist:type_name -> google.protobuf.BoolValue
-	149, // 149: layerg.api.ValidatePurchaseHuaweiRequest.persist:type_name -> google.protobuf.BoolValue
-	149, // 150: layerg.api.ValidatePurchaseFacebookInstantRequest.persist:type_name -> google.protobuf.BoolValue
+	151, // 145: layerg.api.ValidatePurchaseAppleRequest.persist:type_name -> google.protobuf.BoolValue
+	151, // 146: layerg.api.ValidateSubscriptionAppleRequest.persist:type_name -> google.protobuf.BoolValue
+	151, // 147: layerg.api.ValidatePurchaseGoogleRequest.persist:type_name -> google.protobuf.BoolValue
+	151, // 148: layerg.api.ValidateSubscriptionGoogleRequest.persist:type_name -> google.protobuf.BoolValue
+	151, // 149: layerg.api.ValidatePurchaseHuaweiRequest.persist:type_name -> google.protobuf.BoolValue
+	151, // 150: layerg.api.ValidatePurchaseFacebookInstantRequest.persist:type_name -> google.protobuf.BoolValue
 	0,   // 151: layerg.api.ValidatedPurchase.store:type_name -> layerg.api.StoreProvider
-	148, // 152: layerg.api.ValidatedPurchase.purchase_time:type_name -> google.protobuf.Timestamp
-	148, // 153: layerg.api.ValidatedPurchase.create_time:type_name -> google.protobuf.Timestamp
-	148, // 154: layerg.api.ValidatedPurchase.update_time:type_name -> google.protobuf.Timestamp
-	148, // 155: layerg.api.ValidatedPurchase.refund_time:type_name -> google.protobuf.Timestamp
+	150, // 152: layerg.api.ValidatedPurchase.purchase_time:type_name -> google.protobuf.Timestamp
+	150, // 153: layerg.api.ValidatedPurchase.create_time:type_name -> google.protobuf.Timestamp
+	150, // 154: layerg.api.ValidatedPurchase.update_time:type_name -> google.protobuf.Timestamp
+	150, // 155: layerg.api.ValidatedPurchase.refund_time:type_name -> google.protobuf.Timestamp
 	1,   // 156: layerg.api.ValidatedPurchase.environment:type_name -> layerg.api.StoreEnvironment
 	112, // 157: layerg.api.ValidatePurchaseResponse.validated_purchases:type_name -> layerg.api.ValidatedPurchase
 	115, // 158: layerg.api.ValidateSubscriptionResponse.validated_subscription:type_name -> layerg.api.ValidatedSubscription
 	0,   // 159: layerg.api.ValidatedSubscription.store:type_name -> layerg.api.StoreProvider
-	148, // 160: layerg.api.ValidatedSubscription.purchase_time:type_name -> google.protobuf.Timestamp
-	148, // 161: layerg.api.ValidatedSubscription.create_time:type_name -> google.protobuf.Timestamp
-	148, // 162: layerg.api.ValidatedSubscription.update_time:type_name -> google.protobuf.Timestamp
+	150, // 160: layerg.api.ValidatedSubscription.purchase_time:type_name -> google.protobuf.Timestamp
+	150, // 161: layerg.api.ValidatedSubscription.create_time:type_name -> google.protobuf.Timestamp
+	150, // 162: layerg.api.ValidatedSubscription.update_time:type_name -> google.protobuf.Timestamp
 	1,   // 163: layerg.api.ValidatedSubscription.environment:type_name -> layerg.api.StoreEnvironment
-	148, // 164: layerg.api.ValidatedSubscription.expiry_time:type_name -> google.protobuf.Timestamp
-	148, // 165: layerg.api.ValidatedSubscription.refund_time:type_name -> google.protobuf.Timestamp
+	150, // 164: layerg.api.ValidatedSubscription.expiry_time:type_name -> google.protobuf.Timestamp
+	150, // 165: layerg.api.ValidatedSubscription.refund_time:type_name -> google.protobuf.Timestamp
 	112, // 166: layerg.api.PurchaseList.validated_purchases:type_name -> layerg.api.ValidatedPurchase
 	115, // 167: layerg.api.SubscriptionList.validated_subscriptions:type_name -> layerg.api.ValidatedSubscription
-	144, // 168: layerg.api.WriteLeaderboardRecordRequest.record:type_name -> layerg.api.WriteLeaderboardRecordRequest.LeaderboardRecordWrite
-	150, // 169: layerg.api.WriteStorageObject.permission_read:type_name -> google.protobuf.Int32Value
-	150, // 170: layerg.api.WriteStorageObject.permission_write:type_name -> google.protobuf.Int32Value
+	145, // 168: layerg.api.WriteLeaderboardRecordRequest.record:type_name -> layerg.api.WriteLeaderboardRecordRequest.LeaderboardRecordWrite
+	152, // 169: layerg.api.WriteStorageObject.permission_read:type_name -> google.protobuf.Int32Value
+	152, // 170: layerg.api.WriteStorageObject.permission_write:type_name -> google.protobuf.Int32Value
 	119, // 171: layerg.api.WriteStorageObjectsRequest.objects:type_name -> layerg.api.WriteStorageObject
-	145, // 172: layerg.api.WriteTournamentRecordRequest.record:type_name -> layerg.api.WriteTournamentRecordRequest.TournamentRecordWrite
-	123, // 173: layerg.api.AuthenticateTelegramRequest.account:type_name -> layerg.api.AccountTelegram
-	149, // 174: layerg.api.AuthenticateTelegramRequest.create:type_name -> google.protobuf.BoolValue
-	146, // 175: layerg.api.AccountTelegram.vars:type_name -> layerg.api.AccountTelegram.VarsEntry
-	125, // 176: layerg.api.AuthenticateEvmRequest.account:type_name -> layerg.api.AccountEvm
-	149, // 177: layerg.api.AuthenticateEvmRequest.create:type_name -> google.protobuf.BoolValue
-	147, // 178: layerg.api.AccountEvm.vars:type_name -> layerg.api.AccountEvm.VarsEntry
-	6,   // 179: layerg.api.Request.QueryEntry.value:type_name -> layerg.api.Query
-	103, // 180: layerg.api.FriendsOfFriendsList.FriendOfFriend.user:type_name -> layerg.api.User
-	103, // 181: layerg.api.GroupUserList.GroupUser.user:type_name -> layerg.api.User
-	150, // 182: layerg.api.GroupUserList.GroupUser.state:type_name -> google.protobuf.Int32Value
-	51,  // 183: layerg.api.UserGroupList.UserGroup.group:type_name -> layerg.api.Group
-	150, // 184: layerg.api.UserGroupList.UserGroup.state:type_name -> google.protobuf.Int32Value
-	2,   // 185: layerg.api.WriteLeaderboardRecordRequest.LeaderboardRecordWrite.operator:type_name -> layerg.api.Operator
-	2,   // 186: layerg.api.WriteTournamentRecordRequest.TournamentRecordWrite.operator:type_name -> layerg.api.Operator
-	187, // [187:187] is the sub-list for method output_type
-	187, // [187:187] is the sub-list for method input_type
-	187, // [187:187] is the sub-list for extension type_name
-	187, // [187:187] is the sub-list for extension extendee
-	0,   // [0:187] is the sub-list for field type_name
+	146, // 172: layerg.api.WriteTournamentRecordRequest.record:type_name -> layerg.api.WriteTournamentRecordRequest.TournamentRecordWrite
+	124, // 173: layerg.api.AuthenticateTelegramRequest.account:type_name -> layerg.api.AccountTelegram
+	151, // 174: layerg.api.AuthenticateTelegramRequest.create:type_name -> google.protobuf.BoolValue
+	147, // 175: layerg.api.AuthenticateUA.vars:type_name -> layerg.api.AuthenticateUA.VarsEntry
+	151, // 176: layerg.api.AuthenticateUA.create:type_name -> google.protobuf.BoolValue
+	148, // 177: layerg.api.AccountTelegram.vars:type_name -> layerg.api.AccountTelegram.VarsEntry
+	126, // 178: layerg.api.AuthenticateEvmRequest.account:type_name -> layerg.api.AccountEvm
+	151, // 179: layerg.api.AuthenticateEvmRequest.create:type_name -> google.protobuf.BoolValue
+	149, // 180: layerg.api.AccountEvm.vars:type_name -> layerg.api.AccountEvm.VarsEntry
+	6,   // 181: layerg.api.Request.QueryEntry.value:type_name -> layerg.api.Query
+	103, // 182: layerg.api.FriendsOfFriendsList.FriendOfFriend.user:type_name -> layerg.api.User
+	103, // 183: layerg.api.GroupUserList.GroupUser.user:type_name -> layerg.api.User
+	152, // 184: layerg.api.GroupUserList.GroupUser.state:type_name -> google.protobuf.Int32Value
+	51,  // 185: layerg.api.UserGroupList.UserGroup.group:type_name -> layerg.api.Group
+	152, // 186: layerg.api.UserGroupList.UserGroup.state:type_name -> google.protobuf.Int32Value
+	2,   // 187: layerg.api.WriteLeaderboardRecordRequest.LeaderboardRecordWrite.operator:type_name -> layerg.api.Operator
+	2,   // 188: layerg.api.WriteTournamentRecordRequest.TournamentRecordWrite.operator:type_name -> layerg.api.Operator
+	189, // [189:189] is the sub-list for method output_type
+	189, // [189:189] is the sub-list for method input_type
+	189, // [189:189] is the sub-list for extension type_name
+	189, // [189:189] is the sub-list for extension extendee
+	0,   // [0:189] is the sub-list for field type_name
 }
 
 func init() { file_api_proto_init() }
@@ -12638,7 +12728,7 @@ func file_api_proto_init() {
 			}
 		}
 		file_api_proto_msgTypes[117].Exporter = func(v any, i int) any {
-			switch v := v.(*AccountTelegram); i {
+			switch v := v.(*AuthenticateUA); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -12650,7 +12740,7 @@ func file_api_proto_init() {
 			}
 		}
 		file_api_proto_msgTypes[118].Exporter = func(v any, i int) any {
-			switch v := v.(*AuthenticateEvmRequest); i {
+			switch v := v.(*AccountTelegram); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -12662,6 +12752,18 @@ func file_api_proto_init() {
 			}
 		}
 		file_api_proto_msgTypes[119].Exporter = func(v any, i int) any {
+			switch v := v.(*AuthenticateEvmRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_api_proto_msgTypes[120].Exporter = func(v any, i int) any {
 			switch v := v.(*AccountEvm); i {
 			case 0:
 				return &v.state
@@ -12673,7 +12775,7 @@ func file_api_proto_init() {
 				return nil
 			}
 		}
-		file_api_proto_msgTypes[135].Exporter = func(v any, i int) any {
+		file_api_proto_msgTypes[136].Exporter = func(v any, i int) any {
 			switch v := v.(*FriendsOfFriendsList_FriendOfFriend); i {
 			case 0:
 				return &v.state
@@ -12685,7 +12787,7 @@ func file_api_proto_init() {
 				return nil
 			}
 		}
-		file_api_proto_msgTypes[136].Exporter = func(v any, i int) any {
+		file_api_proto_msgTypes[137].Exporter = func(v any, i int) any {
 			switch v := v.(*GroupUserList_GroupUser); i {
 			case 0:
 				return &v.state
@@ -12697,7 +12799,7 @@ func file_api_proto_init() {
 				return nil
 			}
 		}
-		file_api_proto_msgTypes[137].Exporter = func(v any, i int) any {
+		file_api_proto_msgTypes[138].Exporter = func(v any, i int) any {
 			switch v := v.(*UserGroupList_UserGroup); i {
 			case 0:
 				return &v.state
@@ -12709,7 +12811,7 @@ func file_api_proto_init() {
 				return nil
 			}
 		}
-		file_api_proto_msgTypes[138].Exporter = func(v any, i int) any {
+		file_api_proto_msgTypes[139].Exporter = func(v any, i int) any {
 			switch v := v.(*WriteLeaderboardRecordRequest_LeaderboardRecordWrite); i {
 			case 0:
 				return &v.state
@@ -12721,7 +12823,7 @@ func file_api_proto_init() {
 				return nil
 			}
 		}
-		file_api_proto_msgTypes[139].Exporter = func(v any, i int) any {
+		file_api_proto_msgTypes[140].Exporter = func(v any, i int) any {
 			switch v := v.(*WriteTournamentRecordRequest_TournamentRecordWrite); i {
 			case 0:
 				return &v.state
@@ -12748,7 +12850,7 @@ func file_api_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_api_proto_rawDesc,
 			NumEnums:      6,
-			NumMessages:   142,
+			NumMessages:   144,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

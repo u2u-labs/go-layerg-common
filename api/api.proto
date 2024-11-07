@@ -1436,6 +1436,15 @@ message AuthenticateTelegramRequest {
   google.protobuf.BoolValue create = 2;
   
 }
+
+message AuthenticateUA {
+  string jwt = 1;
+  string refresh_jwt = 2;
+  map<string, string> vars = 3;
+  google.protobuf.BoolValue create = 4;
+
+}
+
 // Send a Telegram token to the server. Used with authenticate/link/unlink.
 message AccountTelegram {
   // The Telegram account details.
