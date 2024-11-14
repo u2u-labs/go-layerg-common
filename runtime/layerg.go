@@ -171,6 +171,69 @@ type LayerGModule interface {
 
 	GetSatori() Satori
 	GetFleetManager() FleetManager
+
+	GetNFTs(ctx context.Context, params NFTQueryParams) (*NFTResponse, error)
+}
+
+type Media struct {
+	ID      string `json:"id"`
+	S3Url   string `json:"S3Url"`
+	IPFSUrl string `json:"IPFSUrl"`
+	AssetId string `json:"AssetId"`
+}
+
+// Struct to represent individual metadata attributes
+type Attribute struct {
+	Value     string `json:"value"`
+	TraitType string `json:"trait_type"`
+}
+
+// Struct to represent metadata details
+type MetadataDetails struct {
+	Creator    string      `json:"creator"`
+	Attributes []Attribute `json:"attributes"`
+}
+
+type Metadata struct {
+	ID       string          `json:"id"`
+	Metadata MetadataDetails `json:"metadata"`
+	IPFSUrl  string          `json:"IPFSUrl"`
+	AssetId  string          `json:"AssetId"`
+}
+
+type NFTData struct {
+	ID                string   `json:"id"`
+	Name              string   `json:"name"`
+	TokenId           string   `json:"tokenId"`
+	Description       string   `json:"description"`
+	CollectionAddress string   `json:"collectionAddress"`
+	Media             Media    `json:"media"`
+	Metadata          Metadata `json:"metadata"`
+	OffChainBalance   string   `json:"offChainBalance"`
+	OnChainBalance    string   `json:"onChainBalance"`
+	OwnerAddress      string   `json:"ownerAddress"`
+	Type              string   `json:"type"`
+}
+
+// Struct to represent pagination information
+type Paging struct {
+	Page    int  `json:"page"`
+	Limit   int  `json:"limit"`
+	HasNext bool `json:"hasNext"`
+}
+
+// Main struct to represent the NFT response
+type NFTResponse struct {
+	Data   []NFTData `json:"data"`
+	Paging Paging    `json:"paging"`
+}
+type NFTQueryParams struct {
+	CollectionAddress string   `json:"collectionAddress" required:"true"`
+	Mode              string   `json:"mode"`
+	Page              string   `json:"page"`
+	Limit             string   `json:"limit"`
+	OwnerAddress      string   `json:"ownerAddress"`
+	TokenIds          []string `json:"tokenIds"`
 }
 
 type MessageList struct {
