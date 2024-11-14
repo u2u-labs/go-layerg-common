@@ -212,6 +212,7 @@ type NFTData struct {
 	OffChainBalance   string   `json:"offChainBalance"`
 	OnChainBalance    string   `json:"onChainBalance"`
 	OwnerAddress      string   `json:"ownerAddress"`
+	Type              string   `json:"type"`
 }
 
 // Struct to represent pagination information
