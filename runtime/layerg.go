@@ -173,6 +173,7 @@ type LayerGModule interface {
 	GetFleetManager() FleetManager
 
 	GetNFTs(ctx context.Context, params NFTQueryParams) (*NFTResponse, error)
+	GetAggToken(ctx context.Context) (string, error)
 	GetCollectionAsset(ctx context.Context, params CollectionAssetQueryParams) (*CollectionAssetResponse, error)
 }
 
