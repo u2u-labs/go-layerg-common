@@ -173,6 +173,7 @@ type LayerGModule interface {
 	GetFleetManager() FleetManager
 
 	GetNFTs(ctx context.Context, params NFTQueryParams) (*NFTResponse, error)
+	GetCollectionAsset(ctx context.Context, params CollectionAssetQueryParams) (*CollectionAssetResponse, error)
 }
 
 type Media struct {
@@ -227,6 +228,21 @@ type NFTResponse struct {
 	Data   []NFTData `json:"data"`
 	Paging Paging    `json:"paging"`
 }
+
+type CollectionAssetResponse struct {
+	Data   []AssetData `json:"data"`
+	Paging Paging      `json:"paging"`
+}
+
+type AssetData struct {
+	ID                string   `json:"id"`
+	Name              string   `json:"name"`
+	TokenId           string   `json:"tokenId"`
+	Description       string   `json:"description"`
+	CollectionAddress string   `json:"collectionAddress"`
+	Media             Media    `json:"media"`
+	Metadata          Metadata `json:"metadata"`
+}
 type NFTQueryParams struct {
 	CollectionAddress string   `json:"collectionAddress" required:"true"`
 	Mode              string   `json:"mode"`
@@ -234,6 +250,12 @@ type NFTQueryParams struct {
 	Limit             string   `json:"limit"`
 	OwnerAddress      string   `json:"ownerAddress"`
 	TokenIds          []string `json:"tokenIds"`
+}
+
+type CollectionAssetQueryParams struct {
+	CollectionId string `json:"collectionId" required:"true"`
+	Page         string `json:"page"`
+	Limit        string `json:"limit"`
 }
 
 type MessageList struct {
