@@ -186,8 +186,8 @@ type Media struct {
 
 // Struct to represent individual metadata attributes
 type Attribute struct {
-	Value     string `json:"value"`
-	TraitType string `json:"trait_type"`
+	Value     interface{} `json:"value"`
+	TraitType string      `json:"trait_type"`
 }
 
 // Struct to represent metadata details
