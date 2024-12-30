@@ -174,7 +174,7 @@ type LayerGModule interface {
 
 	GetNFTs(ctx context.Context, params NFTQueryParams) (*NFTResponse, error)
 	GetAggToken(ctx context.Context) (string, error)
-	GetCollectionAsset(ctx context.Context, params CollectionAssetQueryParams) (*CollectionAssetResponse, error)
+	GetCollectionAsset(ctx context.Context, params CollectionAssetQueryParams, token string) (*CollectionAssetResponse, error)
 }
 
 type Media struct {
@@ -186,8 +186,8 @@ type Media struct {
 
 // Struct to represent individual metadata attributes
 type Attribute struct {
-	Value     string `json:"value"`
-	TraitType string `json:"trait_type"`
+	Value     interface{} `json:"value"`
+	TraitType string      `json:"trait_type"`
 }
 
 // Struct to represent metadata details
