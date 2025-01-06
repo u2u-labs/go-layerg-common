@@ -1,4 +1,4 @@
-package auth
+package masterdb
 
 import (
 	"crypto/ecdsa"
@@ -43,13 +43,12 @@ func VerifySignature(pub *ecdsa.PublicKey, payloadBytes []byte, signature string
 	return ecdsa.Verify(pub, hash[:], r, s), nil
 }
 
-
 // ConvertToBytes converts a payload of type any to a byte slice.
 func ConvertToBytes(payload any) ([]byte, error) {
-    // Marshal the payload into JSON format
-    bytes, err := json.Marshal(payload)
-    if err != nil {
-        return nil, err // Return an error if marshaling fails
-    }
-    return bytes, nil // Return the byte slice
+	// Marshal the payload into JSON format
+	bytes, err := json.Marshal(payload)
+	if err != nil {
+		return nil, err // Return an error if marshaling fails
+	}
+	return bytes, nil // Return the byte slice
 }

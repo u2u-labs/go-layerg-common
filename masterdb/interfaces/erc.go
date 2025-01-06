@@ -1,4 +1,4 @@
-package interfaces
+package masterdb
 
 type InsertErc721Asset struct {
 	ChainID      int    `json:"chain_id"`
