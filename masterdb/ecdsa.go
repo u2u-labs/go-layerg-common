@@ -2,10 +2,13 @@ package masterdb
 
 import (
 	"crypto/ecdsa"
+	"crypto/elliptic"
 	"crypto/rand"
 	"crypto/sha256"
 	"encoding/base64"
+	"encoding/hex"
 	"encoding/json"
+	"errors"
 	"math/big"
 )
 
@@ -51,4 +54,53 @@ func ConvertToBytes(payload any) ([]byte, error) {
 		return nil, err // Return an error if marshaling fails
 	}
 	return bytes, nil // Return the byte slice
+}
+
+// PrivateKeyFromHex converts a hexadecimal private key string to an *ecdsa.PrivateKey
+func PrivateKeyFromHex(hexKey string) (*ecdsa.PrivateKey, error) {
+	// Decode the hex string into raw bytes
+	privKeyBytes, err := hex.DecodeString(hexKey)
+	if err != nil {
+		return nil, errors.New("invalid hexadecimal string")
+	}
+
+	// Use the elliptic P-256 curve (secp256r1) to generate the private key
+	curve := elliptic.P256()
+
+	// Create a new big.Int from the private key bytes
+	priv := new(big.Int).SetBytes(privKeyBytes)
+
+	// Generate the private key using the big.Int value
+	privKey := new(ecdsa.PrivateKey)
+	privKey.PublicKey.Curve = curve
+	privKey.D = priv
+	privKey.PublicKey.X, privKey.PublicKey.Y = curve.ScalarBaseMult(privKey.D.Bytes())
+
+	return privKey, nil
+}
+
+// PublicKeyFromHex converts a hexadecimal string to *ecdsa.PublicKey
+func PublicKeyFromHex(hexKey string) (*ecdsa.PublicKey, error) {
+	// Decode the hex string into raw bytes
+	pubKeyBytes, err := hex.DecodeString(hexKey)
+	if err != nil {
+		return nil, errors.New("invalid hexadecimal string")
+	}
+
+	// Use the elliptic P-256 curve (secp256r1)
+	curve := elliptic.P256()
+
+	// The public key is usually represented as a concatenation of X and Y coordinates
+	if len(pubKeyBytes) != 64 { // 32 bytes for X and 32 bytes for Y
+		return nil, errors.New("public key must be 64 bytes (32 bytes for X and 32 bytes for Y)")
+	}
+
+	// Split the byte slice into X and Y components
+	x := new(big.Int).SetBytes(pubKeyBytes[:32])
+	y := new(big.Int).SetBytes(pubKeyBytes[32:])
+
+	// Create the public key
+	pubKey := &ecdsa.PublicKey{Curve: curve, X: x, Y: y}
+
+	return pubKey, nil
 }
