@@ -15,9 +15,9 @@ type Add1155Asset struct {
 
 // Add20Asset represents the structure for adding a 20 asset.
 type Add20Asset struct {
-	Asset20From Asset1155 `json:"asset20from"`
-	Asset20To   Asset1155 `json:"asset20to"`
-	History     History   `json:"history"`
+	Asset20From Asset20 `json:"asset20from"`
+	Asset20To   Asset20 `json:"asset20to"`
+	History     History `json:"history"`
 }
 
 // History holds the transaction history information.
