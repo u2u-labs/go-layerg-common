@@ -26,7 +26,7 @@ type History struct {
 	To           string `json:"to"`
 	CollectionId string `json:"collectionId"`
 	TokenId      string `json:"tokenId"`
-	Amount       int    `json:"amount"`
+	Amount       string `json:"amount"`
 	TxHash       string `json:"txHash"`
 	Signature    string `json:"signature"`
 }
