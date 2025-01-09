@@ -6,6 +6,11 @@ type Add721Asset struct {
 	History  History  `json:"history"`
 }
 
+type Add721AssetBatch struct {
+	Assets721 []Asset721 `json:"assets721"`
+	// History   *History      `json:"history,omitempty"`
+}
+
 // Add1155Asset represents the structure for adding a 1155 asset.
 type Add1155Asset struct {
 	Asset1155From Asset1155 `json:"asset1155from"`
@@ -13,11 +18,21 @@ type Add1155Asset struct {
 	History       History   `json:"history"`
 }
 
+type Add1155AssetBatch struct {
+	Assets1155 []Asset1155 `json:"assets1155"`
+	// History   *History      `json:"history,omitempty"`
+}
+
 // Add20Asset represents the structure for adding a 20 asset.
 type Add20Asset struct {
 	Asset20From Asset20 `json:"asset20from"`
 	Asset20To   Asset20 `json:"asset20to"`
 	History     History `json:"history"`
+}
+
+type Add20AssetBatch struct {
+	Assets20 []Asset20 `json:"assets20"`
+	// History   *History      `json:"history,omitempty"`
 }
 
 // History holds the transaction history information.
