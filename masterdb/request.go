@@ -1,5 +1,7 @@
 package masterdb
 
+import "github.com/google/uuid"
+
 // Add721Asset represents the structure for adding a 721 asset.
 type Add721Asset struct {
 	Asset721 Asset721 `json:"asset721"`
@@ -70,4 +72,9 @@ type Asset20 struct {
 	CollectionId string `json:"collectionId"`
 	Owner        string `json:"owner"`
 	Balance      string `json:"balance"`
+}
+
+type VerifyRandomAsset struct {
+	AssetType CollectionType `json:"assetType"`
+	AssetId   uuid.UUID      `json:"assetId"`
 }
