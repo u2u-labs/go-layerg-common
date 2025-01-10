@@ -1,6 +1,10 @@
 package masterdb
 
-import "time"
+import (
+	"time"
+
+	"github.com/google/uuid"
+)
 
 type CollectionType string
 
@@ -29,4 +33,56 @@ type ChainResponse struct {
 	Explorer    string `json:"explorer"`
 	LatestBlock int64  `json:"latestBlock"`
 	BlockTime   int32  `json:"blockTime"`
+}
+
+type Erc721CollectionAssetResponse struct {
+	ID           uuid.UUID `json:"id"`
+	ChainID      int32     `json:"chainId"`
+	CollectionID string    `json:"collectionId"`
+	TokenID      string    `json:"tokenId"`
+	Owner        string    `json:"owner"`
+	Attributes   string    `json:"attributes"`
+	CreatedAt    time.Time `json:"createdAt"`
+	UpdatedAt    time.Time `json:"updatedAt"`
+	UpdatedBy    uuid.UUID `json:"updatedBy"`
+}
+
+type Erc1155CollectionAssetResponse struct {
+	ID           uuid.UUID `json:"id"`
+	ChainID      int32     `json:"chainId"`
+	CollectionID string    `json:"collectionId"`
+	TokenID      string    `json:"tokenId"`
+	Owner        string    `json:"owner"`
+	Balance      string    `json:"balance"`
+	Attributes   string    `json:"attributes"`
+	CreatedAt    time.Time `json:"createdAt"`
+	UpdatedAt    time.Time `json:"updatedAt"`
+	UpdatedBy    uuid.UUID `json:"updatedBy"`
+}
+
+type Erc20CollectionAssetResponse struct {
+	ID           uuid.UUID `json:"id"`
+	ChainID      int32     `json:"chainId"`
+	CollectionID string    `json:"collectionId"`
+	Owner        string    `json:"owner"`
+	Balance      string    `json:"balance"`
+	CreatedAt    time.Time `json:"createdAt"`
+	UpdatedAt    time.Time `json:"updatedAt"`
+	UpdatedBy    uuid.UUID `json:"updatedBy"`
+}
+
+type RandomAssetData struct {
+	ID           uuid.UUID `json:"id"`
+	ChainID      int32     `json:"chainId"`
+	CollectionID string    `json:"collectionId"`
+	Owner        string    `json:"owner"`
+	CreatedAt    time.Time `json:"createdAt"`
+	UpdatedAt    time.Time `json:"updatedAt"`
+	UpdatedBy    uuid.UUID `json:"updatedBy"`
+	IsVerified   bool      `json:"isVerified"`
+}
+
+type RandomAssetResponse struct {
+	AssetType CollectionType  `json:"assetType"`
+	AssetData RandomAssetData `json:"assetData"`
 }

@@ -43,7 +43,6 @@ type History struct {
 	TokenId      string `json:"tokenId"`
 	Amount       string `json:"amount"`
 	TxHash       string `json:"txHash"`
-	Signature    string `json:"signature"`
 }
 
 // Asset721 holds the information specific to the 721 asset.
@@ -53,7 +52,6 @@ type Asset721 struct {
 	TokenId      string `json:"tokenId"`
 	Owner        string `json:"owner"`
 	Attributes   string `json:"attributes"`
-	Signature    string `json:"signature"`
 }
 
 // Asset1155 holds the information specific to the 1155 asset.
@@ -64,7 +62,6 @@ type Asset1155 struct {
 	Owner        string `json:"owner"`
 	Balance      string `json:"balance"`
 	Attributes   string `json:"attributes"`
-	Signature    string `json:"signature"`
 }
 
 // Asset20 holds the information specific to the 20 asset.
@@ -73,5 +70,4 @@ type Asset20 struct {
 	CollectionId string `json:"collectionId"`
 	Owner        string `json:"owner"`
 	Balance      string `json:"balance"`
-	Signature    string `json:"signature"`
 }
