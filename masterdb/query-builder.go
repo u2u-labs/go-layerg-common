@@ -1,144 +1,187 @@
-type CommonAssetData struct {
-	ID           uuid.UUID `json:"id"`
-	ChainID      int32     `json:"chainId"`
-	CollectionID string    `json:"collectionId"`
-	Owner        string    `json:"owner"`
-	CreatedAt    time.Time `json:"createdAt"`
-	UpdatedAt    time.Time `json:"updatedAt"`
-	UpdatedBy    uuid.UUID `json:"updatedBy"`
-}
+package masterdb
 
-type assetQueryBuilderParam struct {
-	chainId       int32
-	collectionId  *string
-	tokenId       *string
-	owner         *string
-	createdAtFrom *time.Time
-	createdAtTo   *time.Time
-	page          *int
-	limit         *int
-	offset        *int
-}
+// import (
+// 	"database/sql"
+// 	"errors"
+// 	"fmt"
+// 	"net/url"
+// 	"time"
+// )
 
-type AssetQueryFunction interface {
-	GetAssetQueryBuilder()
-	GetPaginatedAsset() Pagination[CommonAssetData]
-}
+// type AssetQueryBuilderParams struct {
+// 	ChainId       int32      `json:"chainId"`
+// 	CollectionId  *string    `json:"collectionId,omitempty"`
+// 	TokenIds      []string   `json:"tokenIds,omitempty"`
+// 	Owner         *string    `json:"owner,omitempty"`
+// 	CreatedAtFrom *time.Time `json:"createdAtFrom,omitempty"`
+// 	CreatedAtTo   *time.Time `json:"createdAtTo,omitempty"`
+// 	Page          int        `json:"page"`
+// 	Limit         int        `json:"limit"`
+// 	Offset        int        `json:"offset"`
+// }
 
-type AssetQueryBuilder interface {
-	WithChainId(chainId int32) AssetQueryBuilder
-	WithCollectionId(collectionId string) AssetQueryBuilder
-	WithTokenId(tokenId string) AssetQueryBuilder
-	WithOwner(owner string) AssetQueryBuilder
-	WithCreatedAtFrom(createdAtFrom time.Time) AssetQueryBuilder
-	WithCreatedAtTo(createdAtTo time.Time) AssetQueryBuilder
-	WithPage(page int) AssetQueryBuilder
-	WithLimit(limit int) AssetQueryBuilder
-	WithOffset(offset int) AssetQueryBuilder
-	Build() AssetQueryFunction
-}
+// type masterDbClient struct {
+// 	localDb     *sql.DB
+// 	masterDbUrl string
+// 	useMasterDb bool
+// }
 
-func (b *assetQueryBuilderParam) Build() AssetQueryFunction {
-	return b
-}
+// // NewMasterDbConfig creates a new instance of masterDbConfig with validation
+// func NewMasterDbConfig(
+// 	localDb *sql.DB,
+// 	masterDbUrl string,
+// 	useMasterDb bool,
+// ) (*masterDbClient, error) {
 
-// GetAssetQueryBuilder implements AssetQueryFunction.
-func (b *assetQueryBuilderParam) GetAssetQueryBuilder() {
-	panic("unimplemented")
-}
+// 	if err := validateDbUrl(masterDbUrl); err != nil {
+// 		return nil, fmt.Errorf("invalid master URL: %w", err)
+// 	}
 
-// GetPaginatedAsset implements AssetQueryFunction.
-func (b *assetQueryBuilderParam) GetPaginatedAsset() Pagination[CommonAssetData] {
-	panic("unimplemented")
-}
+// 	return &masterDbClient{
+// 		localDb:     localDb,
+// 		masterDbUrl: masterDbUrl,
+// 		useMasterDb: useMasterDb,
+// 	}, nil
+// }
 
-func NewAssetQueryBuilder() AssetQueryBuilder {
-	return &assetQueryBuilderParam{}
-}
+// // CreateQueryBuilder creates a new AssetQueryBuilder instance
+// func (c *masterDbClient) CreateQueryBuilder() AssetQueryBuilder {
+// 	return &assetQueryBuilderParam{config: c}
+// }
 
-// WithChainId implements AssetQueryBuilder.
-func (b *assetQueryBuilderParam) WithChainId(chainId int32) AssetQueryBuilder {
-	b.chainId = chainId
-	return b
-}
+// // validateDbUrl checks if the provided URL is valid
+// func validateDbUrl(dbUrl string) error {
+// 	if dbUrl == "" {
+// 		return errors.New("database URL cannot be empty")
+// 	}
 
-// WithCollectionId implements AssetQueryBuilder.
-func (b *assetQueryBuilderParam) WithCollectionId(collectionId string) AssetQueryBuilder {
-	b.collectionId = &collectionId
-	return b
-}
+// 	_, err := url.Parse(dbUrl)
+// 	if err != nil {
+// 		return fmt.Errorf("invalid URL format: %w", err)
+// 	}
 
-// WithCreatedAtFrom implements AssetQueryBuilder.
-func (b *assetQueryBuilderParam) WithCreatedAtFrom(createdAtFrom time.Time) AssetQueryBuilder {
-	b.createdAtFrom = &createdAtFrom
-	return b
-}
+// 	return nil
+// }
 
-// WithCreatedAtTo implements AssetQueryBuilder.
-func (b *assetQueryBuilderParam) WithCreatedAtTo(createdAtTo time.Time) AssetQueryBuilder {
-	b.createdAtTo = &createdAtTo
-	return b
-}
+// type assetQueryBuilderParam struct {
+// 	chainId       int32
+// 	collectionId  *string
+// 	tokenIds      *[]string
+// 	owner         *string
+// 	createdAtFrom *time.Time
+// 	createdAtTo   *time.Time
+// 	page          *int
+// 	limit         *int
+// 	offset        *int
+// 	config        *masterDbClient
+// }
 
-// WithLimit implements AssetQueryBuilder.
-func (b *assetQueryBuilderParam) WithLimit(limit int) AssetQueryBuilder {
-	// set limit to 10 if limit is <= 0
-	defaultLimit := 10
-	if limit <= 0 {
-		b.limit = &defaultLimit
-	} else {
-		b.limit = &limit
-	}
-	return b
-}
+// type AssetQueryFunction interface {
+// 	GetAssetQueryBuilder() (*assetQueryBuilderParam, error)
+// 	GetPaginatedAsset() (any, error)
+// }
 
-// WithOffset implements AssetQueryBuilder.
-func (b *assetQueryBuilderParam) WithOffset(offset int) AssetQueryBuilder {
-	// set offset to 0 if offset is < 0
-	defaultOffset := 0
-	if offset < 0 {
-		b.offset = &defaultOffset
-	} else {
-		b.offset = &offset
-	}
-	return b
-}
+// type AssetQueryBuilder interface {
+// 	WithChainId(chainId int32) AssetQueryBuilder
+// 	WithCollectionId(collectionId string) AssetQueryBuilder
+// 	WithTokenIds(tokenIds []string) AssetQueryBuilder
+// 	WithOwner(owner string) AssetQueryBuilder
+// 	WithCreatedAtFrom(createdAtFrom time.Time) AssetQueryBuilder
+// 	WithCreatedAtTo(createdAtTo time.Time) AssetQueryBuilder
+// 	WithPage(page int) AssetQueryBuilder
+// 	WithLimit(limit int) AssetQueryBuilder
+// 	Build() AssetQueryFunction
+// }
 
-// WithOwner implements AssetQueryBuilder.
-func (b *assetQueryBuilderParam) WithOwner(owner string) AssetQueryBuilder {
-	b.owner = &owner
-	return b
-}
+// func (b *assetQueryBuilderParam) getHttpClient() *HttpClient {
+// 	client := NewHttpClient(b.config.masterDbUrl)
+// 	return client
+// }
 
-// WithPage implements AssetQueryBuilder.
-func (b *assetQueryBuilderParam) WithPage(page int) AssetQueryBuilder {
-	// set page to 1 if page is <= 0
-	defaultPage := 1
-	if page <= 0 {
-		b.page = &defaultPage
-	} else {
-		b.page = &page
-	}
-	return b
-}
+// // // WithChainId implements AssetQueryBuilder.
+// // func (b *assetQueryBuilderParam) getCollectionType() masterDbCommon.CollectionType {
+// // 	client := b.getHttpClient()
 
-// WithTokenId implements AssetQueryBuilder.
-func (b *assetQueryBuilderParam) WithTokenId(tokenId string) AssetQueryBuilder {
-	b.tokenId = &tokenId
-	return b
-}
+// // 	var response response.HTTPResponse[masterDbCommon.CollectionResponse]
+// // 	path := fmt.Sprintf("/chain/%d/collection/%s", b.chainId, *b.collectionId)
+// // 	err := client.DoRequest(context.Background(), "GET", path, nil, &response)
+// // 	if err != nil {
+// // 		fmt.Println("err", err)
+// // 		return masterDbCommon.CollectionType("")
+// // 	}
 
-// IMPLEMENTATION
-// asset := NewAssetQueryBuilder().
-// 		WithChainId(1).
-// 		WithCollectionId("1").
-// 		WithTokenId("1").
-// 		WithOwner("1").
-// 		WithCreatedAtFrom(time.Now().Add(-1 * time.Hour)).
-// 		WithCreatedAtTo(time.Now()).
-// 		WithPage(1).
-// 		WithLimit(10).
-// 		WithOffset(0).
-// 		Build()
+// // 	return response.Data.Type
+// // }
 
-// 	asset.GetPaginatedAsset()
+// // WithChainId implements AssetQueryBuilder.
+// func (b *assetQueryBuilderParam) WithChainId(chainId int32) AssetQueryBuilder {
+// 	b.chainId = chainId
+// 	return b
+// }
+
+// // WithCollectionId implements AssetQueryBuilder.
+// func (b *assetQueryBuilderParam) WithCollectionId(collectionId string) AssetQueryBuilder {
+// 	b.collectionId = &collectionId
+// 	return b
+// }
+
+// // WithOwner implements AssetQueryBuilder.
+// func (b *assetQueryBuilderParam) WithOwner(owner string) AssetQueryBuilder {
+// 	b.owner = &owner
+// 	return b
+// }
+
+// // WithTokenId implements AssetQueryBuilder.
+// func (b *assetQueryBuilderParam) WithTokenIds(tokenIds []string) AssetQueryBuilder {
+// 	b.tokenIds = &tokenIds
+// 	return b
+// }
+
+// // WithCreatedAtFrom implements AssetQueryBuilder.
+// func (b *assetQueryBuilderParam) WithCreatedAtFrom(createdAtFrom time.Time) AssetQueryBuilder {
+// 	b.createdAtFrom = &createdAtFrom
+// 	return b
+// }
+
+// // WithCreatedAtTo implements AssetQueryBuilder.
+// func (b *assetQueryBuilderParam) WithCreatedAtTo(createdAtTo time.Time) AssetQueryBuilder {
+// 	b.createdAtTo = &createdAtTo
+// 	return b
+// }
+
+// // WithPage implements AssetQueryBuilder.
+// func (b *assetQueryBuilderParam) WithPage(page int) AssetQueryBuilder {
+// 	b.page = &page
+// 	return b
+// }
+
+// // WithLimit implements AssetQueryBuilder.
+// func (b *assetQueryBuilderParam) WithLimit(limit int) AssetQueryBuilder {
+// 	b.limit = &limit
+// 	return b
+// }
+
+// func (b *assetQueryBuilderParam) Build() AssetQueryFunction {
+// 	// Set default values if not provided
+// 	defaultPage := 1
+// 	defaultLimit := 10
+
+// 	if b.page != nil {
+// 		if *b.page < 1 {
+// 			return nil
+// 		}
+// 		defaultPage = *b.page
+// 	}
+
+// 	if b.limit != nil {
+// 		if *b.limit > 100 {
+// 			return nil
+// 		}
+// 		defaultLimit = *b.limit
+// 	}
+
+// 	// Calculate offset
+// 	offset := (defaultPage - 1) * defaultLimit
+// 	b.offset = &offset
+// 	return b
+// }
