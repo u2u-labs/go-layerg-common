@@ -89,11 +89,11 @@ type RandomAssetResponse struct {
 }
 
 type Pagination[T any] struct {
-	Items      []T   `json:"items"`
-	TotalItems int64 `json:"totalItems"`
-	Page       int   `json:"page"`
-	Limit      int   `json:"limit"`
-	TotalPages int   `json:"totalPages"`
+	Page       int   `json:"page"`       // Current page number
+	Limit      int   `json:"limit"`      // Number of items per page
+	TotalItems int64 `json:"totalItems"` // Total number of items available
+	TotalPages int64 `json:"totalPages"` // Total number of pages
+	Data       []T   `json:"data"`       // The paginated items (can be any type)
 }
 
 // convert type
@@ -138,3 +138,8 @@ type Erc721CollectionAssetSql struct {
 // 		UpdatedBy:    asset.UpdatedBy,
 // 	}
 // }
+
+type HTTPResponse[T any] struct {
+	Message string `json:"message"`
+	Data    T      `json:"data"`
+}
