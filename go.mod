@@ -5,16 +5,13 @@ go 1.23
 toolchain go1.23.2
 
 require (
+	github.com/Masterminds/squirrel v1.5.4
 	github.com/google/uuid v1.6.0
-	github.com/jmoiron/sqlx v1.3.5
-	github.com/lib/pq v1.10.9
-	github.com/satori/go.uuid v1.2.0
 	github.com/unicornultrafoundation/go-u2u v1.1.4
 	google.golang.org/protobuf v1.36.1
 )
 
 require (
-	github.com/Masterminds/squirrel v1.5.4 // indirect
 	github.com/btcsuite/btcd/btcec/v2 v2.2.0 // indirect
 	github.com/decred/dcrd/dcrec/secp256k1/v4 v4.0.1 // indirect
 	github.com/ethereum/go-ethereum v1.13.15 // indirect

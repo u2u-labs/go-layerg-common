@@ -1434,7 +1434,10 @@ message AuthenticateTelegramRequest {
   AccountTelegram account = 1;
   // Register the account if the user does not already exist.
   google.protobuf.BoolValue create = 2;
-  
+}
+
+message SendTelegramOTPRequest {
+  string telegram_id = 1;
 }
 
 message AuthenticateUA {
@@ -1451,9 +1454,12 @@ message AccountTelegram {
   string telegram_id = 1;
   // Set the username on the account at register. Must be unique.
   string username = 2;
-  string telegram_app_data = 3;
+  string firstname = 3;
+  string lastname = 4;
+  string avatar_url = 5;
+  string otp = 6;
   // Extra information that will be bundled in the session token.
-  map<string, string> vars = 4;
+  map<string, string> vars = 7;
 }
 
 // Authenticate against the server with Telegram.
