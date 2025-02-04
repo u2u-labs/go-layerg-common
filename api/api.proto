@@ -1458,8 +1458,9 @@ message AccountTelegram {
   string lastname = 4;
   string avatar_url = 5;
   string otp = 6;
+  string chain_id = 7;
   // Extra information that will be bundled in the session token.
-  map<string, string> vars = 7;
+  map<string, string> vars = 8;
 }
 
 // Authenticate against the server with Telegram.
