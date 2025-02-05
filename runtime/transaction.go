@@ -30,7 +30,7 @@ type OnchainTransactionPayload struct {
 }
 
 type OnchainTransactionRequest struct {
-	ProjectID      string                     `json:"projectId"`
+	ProjectID      int                        `json:"projectId"`
 	ChainID        int                        `json:"chainId"`
 	Sponsor        bool                       `json:"sponsor"`
 	TransactionReq *OnchainTransactionPayload `json:"transactionReq"`
