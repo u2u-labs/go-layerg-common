@@ -1480,3 +1480,25 @@ message AccountEvm {
   // Extra information that will be bundled in the session token.
   map<string, string> vars = 4;
 }
+
+// New message definitions for sponsor transaction request
+message SendOnchainTransactionBody {
+  // The recipient address of the transaction.
+  string to = 1;
+  // The value to send, represented as a string.
+  string value = 2;
+  // The data payload for the transaction.
+  string data = 3;
+  // Maximum priority fee per gas, represented as a string.
+  string max_priority_fee_per_gas = 4;
+}
+
+// Request for sending/sponsoring a transaction.
+message SendOnchainTransactionRequest {
+  // The blockchain chain identifier.
+  int64 chain_id = 1;
+  // Whether the transaction is sponsored.
+  bool sponsor = 2;
+  // The transaction details.
+  SendOnchainTransactionBody transaction_req = 3;
+}

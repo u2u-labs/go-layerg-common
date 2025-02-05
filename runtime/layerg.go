@@ -29,6 +29,8 @@ type LayerGModule interface {
 	AccountDeleteId(ctx context.Context, userID string, recorded bool) error
 	AccountExportId(ctx context.Context, userID string) (string, error)
 
+	BuildContractCallRequest(ctx context.Context, in *ContractCallParams) (*TransactionRequest, error)
+
 	UsersGetId(ctx context.Context, userIDs []string, facebookIDs []string) ([]*api.User, error)
 	UsersGetUsername(ctx context.Context, usernames []string) ([]*api.User, error)
 	UsersGetRandom(ctx context.Context, count int) ([]*api.User, error)
