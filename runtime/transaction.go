@@ -21,3 +21,17 @@ type TransactionRequest struct {
 	Data  string
 	Value *big.Int
 }
+
+type OnchainTransactionPayload struct {
+	To                   string `json:"to"`
+	Value                string `json:"value"`
+	Data                 string `json:"data"`
+	MaxPriorityFeePerGas string `json:"maxPriorityFeePerGas"`
+}
+
+type OnchainTransactionRequest struct {
+	ProjectID      string                     `json:"projectId"`
+	ChainID        int                        `json:"chainId"`
+	Sponsor        bool                       `json:"sponsor"`
+	TransactionReq *OnchainTransactionPayload `json:"transactionReq"`
+}
