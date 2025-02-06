@@ -44,7 +44,6 @@ type AccessItem struct {
 // }
 
 type UATransactionRequest struct {
-	ProjectID      int                 `json:"projectId"`
 	ChainID        int                 `json:"chainId"`
 	Sponsor        bool                `json:"sponsor"`
 	TransactionReq *TransactionRequest `json:"transactionReq"`
