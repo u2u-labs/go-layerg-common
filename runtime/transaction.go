@@ -86,3 +86,20 @@ type User struct {
 	TelegramAuthDate  string  `json:"telegramAuthDate"`
 	TelegramVerified  bool    `json:"telegramVerified"`
 }
+
+type UARefreshTokenResponse struct {
+	Success bool `json:"success"`
+	Data    struct {
+		RefreshToken       string `json:"refreshToken"`
+		RefreshTokenExpire int64  `json:"refreshTokenExpire"`
+		AccessToken        string `json:"accessToken"`
+		AccessTokenExpire  int64  `json:"accessTokenExpire"`
+		UserID             int    `json:"userId"`
+		ApiKey             string `json:"apiKey"`
+	} `json:"data"`
+	Message string `json:"message"`
+}
+
+type UARefreshTokenRequest struct {
+	RefreshToken string `json:"refreshToken"`
+}
