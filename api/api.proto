@@ -1158,6 +1158,8 @@ message User {
   string facebook_instant_game_id = 17;
   // The Apple Sign In ID in the user's account.
   string apple_id = 18;
+  // Wallet address
+  string onchain_id = 19;
 }
 
 // A list of groups belonging to a user, along with the user's role in each group.
