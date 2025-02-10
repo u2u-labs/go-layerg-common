@@ -67,7 +67,7 @@ type Data struct {
 }
 
 type User struct {
-	ID                int     `json:"id"`
+	ID                string  `json:"id"`
 	CreatedAt         string  `json:"createdAt"`
 	UpdatedAt         string  `json:"updatedAt"`
 	Type              string  `json:"type"`
