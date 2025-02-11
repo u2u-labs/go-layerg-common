@@ -133,7 +133,7 @@ type UARefreshTokenRequest struct {
 	RefreshToken string `json:"refreshToken"`
 }
 
-type Response struct {
+type ReceiptResponse struct {
 	Success bool        `json:"success"`
 	Data    DataReceipt `json:"data"`
 	Message string      `json:"message"`
