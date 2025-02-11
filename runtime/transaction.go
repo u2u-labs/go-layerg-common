@@ -56,16 +56,14 @@ type UATransactionResponse struct {
 }
 
 type Data struct {
-	From       string  `json:"from"`
-	To         string  `json:"to"`
-	Amount     string  `json:"amount"`
-	UserOpHash string  `json:"userOpHash"`
-	User       User    `json:"user"`
-	CreatedAt  string  `json:"createdAt"`
-	UpdatedAt  string  `json:"updatedAt"`
-	ID         string  `json:"id"`
-	Logs       []Log   `json:"logs"`
-	Receipt    Receipt `json:"receipt"`
+	From       string `json:"from"`
+	To         string `json:"to"`
+	Amount     string `json:"amount"`
+	UserOpHash string `json:"userOpHash"`
+	User       User   `json:"user"`
+	CreatedAt  string `json:"createdAt"`
+	UpdatedAt  string `json:"updatedAt"`
+	ID         string `json:"id"`
 }
 
 type Log struct {
@@ -133,4 +131,21 @@ type UARefreshTokenResponse struct {
 
 type UARefreshTokenRequest struct {
 	RefreshToken string `json:"refreshToken"`
+}
+
+type Response struct {
+	Success bool        `json:"success"`
+	Data    DataReceipt `json:"data"`
+	Message string      `json:"message"`
+}
+
+type DataReceipt struct {
+	Success       bool    `json:"success"`
+	UserOpHash    string  `json:"userOpHash"`
+	Sender        string  `json:"sender"`
+	Nonce         string  `json:"nonce"`
+	ActualGasCost string  `json:"actualGasCost"`
+	ActualGasUsed string  `json:"actualGasUsed"`
+	Logs          []Log   `json:"logs"`
+	Receipt       Receipt `json:"receipt"`
 }
