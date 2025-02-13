@@ -30,7 +30,7 @@ type LayerGModule interface {
 	AccountExportId(ctx context.Context, userID string) (string, error)
 
 	BuildContractCallRequest(ctx context.Context, in ContractCallParams) (*TransactionRequest, error)
-	SendUAOnchainTX(ctx context.Context, in UATransactionRequest) (*ReceiptResponse, error)
+	SendUAOnchainTX(ctx context.Context, userID string, in UATransactionRequest) (*ReceiptResponse, error)
 
 	UsersGetId(ctx context.Context, userIDs []string, facebookIDs []string) ([]*api.User, error)
 	UsersGetUsername(ctx context.Context, usernames []string) ([]*api.User, error)
