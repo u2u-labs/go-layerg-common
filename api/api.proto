@@ -265,6 +265,17 @@ message AuthenticateGoogleRequest {
   google.protobuf.BoolValue create = 2;
   // Set the username on the account at register. Must be unique.
   string username = 3;
+  // Google info account and code, state that are used for UA callback
+  string code = 4;
+  string state = 5;
+  string error = 6;
+  GoogleProfile profile = 7;
+}
+
+message GoogleProfile {
+  string displayName = 1;
+  string avatarImageUrl = 2;
+  string googleId = 3;
 }
 
 // Authenticate against the server with Steam.
