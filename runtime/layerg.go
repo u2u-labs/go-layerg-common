@@ -179,7 +179,7 @@ type LayerGModule interface {
 	GetAggToken(ctx context.Context) (string, error)
 	GetCollectionAsset(ctx context.Context, params CollectionAssetQueryParams, token string) (*CollectionAssetResponse, error)
 
-	GetRequiredHeadersUA() map[string]string
+	GetRequiredHeadersUA() (map[string]string, error)
 }
 
 type Media struct {
