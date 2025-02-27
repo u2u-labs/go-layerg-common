@@ -178,6 +178,8 @@ type LayerGModule interface {
 	GetNFTs(ctx context.Context, params NFTQueryParams) (*NFTResponse, error)
 	GetAggToken(ctx context.Context) (string, error)
 	GetCollectionAsset(ctx context.Context, params CollectionAssetQueryParams, token string) (*CollectionAssetResponse, error)
+
+	GetRequiredHeadersUA() map[string]string
 }
 
 type Media struct {
