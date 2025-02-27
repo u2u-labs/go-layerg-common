@@ -269,14 +269,6 @@ message AuthenticateGoogleRequest {
   string code = 4;
   string state = 5;
   string error = 6;
-  GoogleProfile profile = 7;
-}
-
-message GoogleProfile {
-  string displayName = 1;
-  string avatarImageUrl = 2;
-  string googleId = 3;
-  string email = 4;
 }
 
 // Authenticate against the server with Steam.
