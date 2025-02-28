@@ -283,6 +283,18 @@ message AuthenticateSteamRequest {
   google.protobuf.BoolValue sync = 4;
 }
 
+// Authenticate against the server with Twitter.
+message AuthenticateTwitterRequest {
+  // Register the account if the user does not already exist.
+  google.protobuf.BoolValue create = 1;
+  // Set the username on the account at register. Must be unique.
+  string username = 2;
+  // Twitter info account and code, state that are used for UA callback
+  string code = 3;
+  string state = 4;
+  string error = 5;
+}
+
 // Ban users from a group.
 message BanGroupUsersRequest {
   // The group to ban users from.

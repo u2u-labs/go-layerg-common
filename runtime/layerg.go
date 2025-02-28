@@ -19,6 +19,7 @@ type LayerGModule interface {
 	AuthenticateGameCenter(ctx context.Context, playerID, bundleID string, timestamp int64, salt, signature, publicKeyUrl, username string, create bool) (string, string, bool, error)
 	AuthenticateGoogle(ctx context.Context, token, username string, create bool, code, state, errStr string) (string, string, bool, error)
 	AuthenticateSteam(ctx context.Context, token, username string, create bool) (string, string, bool, error)
+	AuthenticateTwitter(ctx context.Context, username, code, state, errStr string, create bool) (string, string, bool, error)
 
 	AuthenticateTokenGenerate(userID, username string, exp int64, vars map[string]string) (string, int64, error)
 
