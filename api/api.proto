@@ -153,6 +153,12 @@ message AccountSteam {
   map<string, string> vars = 2;
 }
 
+// Send a Twitter token to the server. Used with authenticate/link/unlink.
+message AccountTwitter {
+  // Extra information that will be bundled in the session token.
+  map<string, string> vars = 1;
+}
+
 // Add one or more friends to the current user.
 message AddFriendsRequest {
   // The account id of a user.
@@ -285,14 +291,16 @@ message AuthenticateSteamRequest {
 
 // Authenticate against the server with Twitter.
 message AuthenticateTwitterRequest {
+  // The Twitter account details.
+  AccountTwitter account = 1;
   // Register the account if the user does not already exist.
-  google.protobuf.BoolValue create = 1;
+  google.protobuf.BoolValue create = 2;
   // Set the username on the account at register. Must be unique.
-  string username = 2;
+  string username = 3;
   // Twitter info account and code, state that are used for UA callback
-  string code = 3;
-  string state = 4;
-  string error = 5;
+  string code = 4;
+  string state = 5;
+  string error = 6;
 }
 
 // Ban users from a group.
