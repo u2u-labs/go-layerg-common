@@ -1466,14 +1466,6 @@ message SendTelegramOTPRequest {
   string telegram_id = 1;
 }
 
-message AuthenticateUA {
-  string jwt = 1;
-  string refresh_jwt = 2;
-  map<string, string> vars = 3;
-  google.protobuf.BoolValue create = 4;
-
-}
-
 // Send a Telegram token to the server. Used with authenticate/link/unlink.
 message AccountTelegram {
   // The Telegram account details.
@@ -1527,4 +1519,68 @@ message SendOnchainTransactionRequest {
   bool sponsor = 2;
   // The transaction details.
   SendOnchainTransactionBody transaction_req = 3;
+}
+
+message UASocialLoginRequest {
+  string username = 1;
+  string code = 2;
+  string state = 3;
+  map<string, string> vars = 4;
+  string error = 5;
+}
+
+message UADirectLoginRequest {
+  UAAccountData user = 1;
+  UAWalletData w = 2;
+  string refresh_token = 3;
+  int64 refresh_token_expire = 4;
+  string access_token = 5;
+  int64 access_token_expire = 6;
+  string user_id = 7;
+  string api_key = 8;
+}
+
+message UAAccountData {
+  string id = 1;
+  google.protobuf.Timestamp created_at = 2;
+  google.protobuf.Timestamp updated_at = 3;
+  string type = 4;
+  string eoa_wallet = 5;
+  string encrypted_private_key = 6;
+  google.protobuf.StringValue username = 7;
+  google.protobuf.StringValue firstname = 8;
+  google.protobuf.StringValue lastname = 9;
+  google.protobuf.StringValue avatar = 10;
+  google.protobuf.StringValue signature = 11;
+  string primary_AA_wallet = 12;
+  google.protobuf.StringValue telegram_id = 13;
+  google.protobuf.StringValue telegram_username = 14;
+  google.protobuf.StringValue telegram_first_name = 15;
+  google.protobuf.StringValue telegram_last_name = 16;
+  google.protobuf.StringValue telegram_avatar_url = 17;
+  google.protobuf.StringValue email = 18;
+  google.protobuf.StringValue facebook_id = 19;
+  google.protobuf.StringValue facebook_email = 20;
+  google.protobuf.StringValue facebook_first_name = 21;
+  google.protobuf.StringValue facebook_last_name = 22;
+  google.protobuf.StringValue facebook_avatar_url = 23;
+  google.protobuf.StringValue google_id = 24;
+  google.protobuf.StringValue google_email = 25;
+  google.protobuf.StringValue google_first_name = 26;
+  google.protobuf.StringValue google_last_name = 27;
+  google.protobuf.StringValue google_avatar_url = 28;
+  google.protobuf.StringValue twitter_id = 29;
+  google.protobuf.StringValue twitter_email = 30;
+  google.protobuf.StringValue twitter_first_name = 31;
+  google.protobuf.StringValue twitter_last_name = 32;
+  google.protobuf.StringValue twitter_avatar_url = 33;
+}
+
+message UAWalletData {
+  string id = 1;
+  google.protobuf.Timestamp created_at = 2;
+  google.protobuf.Timestamp updated_at = 3;
+  string aa_address = 4;
+  string factory_address = 5;
+  string user_id = 6;
 }
