@@ -1522,11 +1522,18 @@ message SendOnchainTransactionRequest {
 }
 
 message UASocialLoginRequest {
-  string username = 1;
-  string code = 2;
-  string state = 3;
+  string code = 1;
+  string state = 2;
+  SocialSource source = 3;
   map<string, string> vars = 4;
-  string error = 5;
+  enum SocialSource {
+    // Telegram
+    telegram = 0;
+    // Google
+    google = 1;
+    // Huawei App Gallery
+    twitter = 2;
+  }
 }
 
 message UADirectLoginRequest {
