@@ -228,7 +228,7 @@ message AuthenticateEmailRequest {
   // Register the account if the user does not already exist.
   google.protobuf.BoolValue create = 2;
   // Set the username on the account at register. Must be unique.
-  string username = 3;
+  string otp = 3;
 }
 
 // Authenticate against the server with Facebook.
@@ -1464,6 +1464,10 @@ message AuthenticateTelegramRequest {
 
 message SendTelegramOTPRequest {
   string telegram_id = 1;
+}
+
+message SendEmailOTPRequest {
+  string email = 1;
 }
 
 // Send a Telegram token to the server. Used with authenticate/link/unlink.
