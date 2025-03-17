@@ -123,7 +123,7 @@ type UARefreshTokenResponse struct {
 		RefreshTokenExpire int64  `json:"refreshTokenExpire"`
 		AccessToken        string `json:"accessToken"`
 		AccessTokenExpire  int64  `json:"accessTokenExpire"`
-		UserID             int    `json:"userId"`
+		UserID             string `json:"userId"`
 		ApiKey             string `json:"apiKey"`
 	} `json:"data"`
 	Message string `json:"message"`
