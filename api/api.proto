@@ -228,7 +228,7 @@ message AuthenticateEmailRequest {
   // Register the account if the user does not already exist.
   google.protobuf.BoolValue create = 2;
   // Set the username on the account at register. Must be unique.
-  string otp = 3;
+  string username = 3;
 }
 
 // Authenticate against the server with Facebook.
