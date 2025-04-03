@@ -17,8 +17,9 @@ type LayerGModule interface {
 	AuthenticateFacebook(ctx context.Context, token string, importFriends bool, username string, create bool) (string, string, bool, error)
 	AuthenticateFacebookInstantGame(ctx context.Context, signedPlayerInfo string, username string, create bool) (string, string, bool, error)
 	AuthenticateGameCenter(ctx context.Context, playerID, bundleID string, timestamp int64, salt, signature, publicKeyUrl, username string, create bool) (string, string, bool, error)
-	AuthenticateGoogle(ctx context.Context, token, username string, create bool) (string, string, bool, error)
+	AuthenticateGoogle(ctx context.Context, token, username string, create bool, code, state, errStr string) (string, string, bool, error)
 	AuthenticateSteam(ctx context.Context, token, username string, create bool) (string, string, bool, error)
+	AuthenticateTwitter(ctx context.Context, username, code, state, errStr string, create bool) (string, string, bool, error)
 
 	AuthenticateTokenGenerate(userID, username string, exp int64, vars map[string]string) (string, int64, error)
 
@@ -28,6 +29,9 @@ type LayerGModule interface {
 
 	AccountDeleteId(ctx context.Context, userID string, recorded bool) error
 	AccountExportId(ctx context.Context, userID string) (string, error)
+
+	BuildContractCallRequest(ctx context.Context, in ContractCallParams) (*TransactionRequest, error)
+	SendUAOnchainTX(ctx context.Context, userID string, in UATransactionRequest, waitForReceipt bool) (*ReceiptResponse, error)
 
 	UsersGetId(ctx context.Context, userIDs []string, facebookIDs []string) ([]*api.User, error)
 	UsersGetUsername(ctx context.Context, usernames []string) ([]*api.User, error)
@@ -172,9 +176,13 @@ type LayerGModule interface {
 	GetSatori() Satori
 	GetFleetManager() FleetManager
 
+	RegisterWebhook(ctx context.Context, config WebhookConfig, handler WebhookHandler) error
+
 	GetNFTs(ctx context.Context, params NFTQueryParams) (*NFTResponse, error)
 	GetAggToken(ctx context.Context) (string, error)
 	GetCollectionAsset(ctx context.Context, params CollectionAssetQueryParams, token string) (*CollectionAssetResponse, error)
+
+	GetRequiredHeadersUA() (map[string]string, error)
 }
 
 type Media struct {

@@ -153,6 +153,12 @@ message AccountSteam {
   map<string, string> vars = 2;
 }
 
+// Send a Twitter token to the server. Used with authenticate/link/unlink.
+message AccountTwitter {
+  // Extra information that will be bundled in the session token.
+  map<string, string> vars = 1;
+}
+
 // Add one or more friends to the current user.
 message AddFriendsRequest {
   // The account id of a user.
@@ -265,6 +271,10 @@ message AuthenticateGoogleRequest {
   google.protobuf.BoolValue create = 2;
   // Set the username on the account at register. Must be unique.
   string username = 3;
+  // Google info account and code, state that are used for UA callback
+  string code = 4;
+  string state = 5;
+  string error = 6;
 }
 
 // Authenticate against the server with Steam.
@@ -277,6 +287,20 @@ message AuthenticateSteamRequest {
   string username = 3;
   // Import Steam friends for the user.
   google.protobuf.BoolValue sync = 4;
+}
+
+// Authenticate against the server with Twitter.
+message AuthenticateTwitterRequest {
+  // The Twitter account details.
+  AccountTwitter account = 1;
+  // Register the account if the user does not already exist.
+  google.protobuf.BoolValue create = 2;
+  // Set the username on the account at register. Must be unique.
+  string username = 3;
+  // Twitter info account and code, state that are used for UA callback
+  string code = 4;
+  string state = 5;
+  string error = 6;
 }
 
 // Ban users from a group.
@@ -1158,6 +1182,8 @@ message User {
   string facebook_instant_game_id = 17;
   // The Apple Sign In ID in the user's account.
   string apple_id = 18;
+  // Wallet address
+  string onchain_id = 19;
 }
 
 // A list of groups belonging to a user, along with the user's role in each group.
@@ -1434,15 +1460,14 @@ message AuthenticateTelegramRequest {
   AccountTelegram account = 1;
   // Register the account if the user does not already exist.
   google.protobuf.BoolValue create = 2;
-  
 }
 
-message AuthenticateUA {
-  string jwt = 1;
-  string refresh_jwt = 2;
-  map<string, string> vars = 3;
-  google.protobuf.BoolValue create = 4;
+message SendTelegramOTPRequest {
+  string telegram_id = 1;
+}
 
+message SendEmailOTPRequest {
+  string email = 1;
 }
 
 // Send a Telegram token to the server. Used with authenticate/link/unlink.
@@ -1451,9 +1476,13 @@ message AccountTelegram {
   string telegram_id = 1;
   // Set the username on the account at register. Must be unique.
   string username = 2;
-  string telegram_app_data = 3;
+  string firstname = 3;
+  string lastname = 4;
+  string avatar_url = 5;
+  string otp = 6;
+  int64 chain_id = 7;
   // Extra information that will be bundled in the session token.
-  map<string, string> vars = 4;
+  map<string, string> vars = 8;
 }
 
 // Authenticate against the server with Telegram.
@@ -1472,4 +1501,97 @@ message AccountEvm {
   string evm_signature = 3;
   // Extra information that will be bundled in the session token.
   map<string, string> vars = 4;
+}
+
+// New message definitions for sponsor transaction request
+message SendOnchainTransactionBody {
+  // The recipient address of the transaction.
+  string to = 1;
+  // The value to send, represented as a string.
+  string value = 2;
+  // The data payload for the transaction.
+  string data = 3;
+  // Maximum priority fee per gas, represented as a string.
+  string max_priority_fee_per_gas = 4;
+}
+
+// Request for sending/sponsoring a transaction.
+message SendOnchainTransactionRequest {
+  // The blockchain chain identifier.
+  int64 chain_id = 1;
+  // Whether the transaction is sponsored.
+  bool sponsor = 2;
+  // The transaction details.
+  SendOnchainTransactionBody transaction_req = 3;
+}
+
+message UASocialLoginRequest {
+  string code = 1;
+  string state = 2;
+  SocialSource source = 3;
+  map<string, string> vars = 4;
+  enum SocialSource {
+    // Telegram
+    telegram = 0;
+    // Google
+    google = 1;
+    // Huawei App Gallery
+    twitter = 2;
+  }
+}
+
+message UADirectLoginRequest {
+  UAAccountData user = 1;
+  UAWalletData w = 2;
+  string refresh_token = 3;
+  int64 refresh_token_expire = 4;
+  string access_token = 5;
+  int64 access_token_expire = 6;
+  string user_id = 7;
+  string api_key = 8;
+}
+
+message UAAccountData {
+  string id = 1;
+  google.protobuf.Timestamp created_at = 2;
+  google.protobuf.Timestamp updated_at = 3;
+  string type = 4;
+  string eoa_wallet = 5;
+  string encrypted_private_key = 6;
+  google.protobuf.StringValue username = 7;
+  google.protobuf.StringValue firstname = 8;
+  google.protobuf.StringValue lastname = 9;
+  google.protobuf.StringValue avatar = 10;
+  google.protobuf.StringValue signature = 11;
+  string primary_AA_wallet = 12;
+  google.protobuf.StringValue telegram_id = 13;
+  google.protobuf.StringValue telegram_username = 14;
+  google.protobuf.StringValue telegram_first_name = 15;
+  google.protobuf.StringValue telegram_last_name = 16;
+  google.protobuf.StringValue telegram_avatar_url = 17;
+  google.protobuf.StringValue email = 18;
+  google.protobuf.StringValue facebook_id = 19;
+  google.protobuf.StringValue facebook_email = 20;
+  google.protobuf.StringValue facebook_first_name = 21;
+  google.protobuf.StringValue facebook_last_name = 22;
+  google.protobuf.StringValue facebook_avatar_url = 23;
+  google.protobuf.StringValue google_id = 24;
+  google.protobuf.StringValue google_email = 25;
+  google.protobuf.StringValue google_first_name = 26;
+  google.protobuf.StringValue google_last_name = 27;
+  google.protobuf.StringValue google_avatar_url = 28;
+  google.protobuf.StringValue twitter_id = 29;
+  google.protobuf.StringValue twitter_email = 30;
+  google.protobuf.StringValue twitter_first_name = 31;
+  google.protobuf.StringValue twitter_last_name = 32;
+  google.protobuf.StringValue twitter_avatar_url = 33;
+}
+
+message UAWalletData {
+  string id = 1;
+  google.protobuf.Timestamp created_at = 2;
+  google.protobuf.Timestamp updated_at = 3;
+  string aa_address = 4;
+  string factory_address = 5;
+  string user_id = 6;
 }
