@@ -183,6 +183,8 @@ type LayerGModule interface {
 	GetCollectionAsset(ctx context.Context, params CollectionAssetQueryParams, token string) (*CollectionAssetResponse, error)
 
 	GetRequiredHeadersUA() (map[string]string, error)
+
+	GetMQTTModule(ctx context.Context, config MQTTConfig) error
 }
 
 type Media struct {
