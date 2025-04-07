@@ -185,6 +185,7 @@ type LayerGModule interface {
 	GetRequiredHeadersUA() (map[string]string, error)
 
 	RegisterMQTTSubscription(ctx context.Context, config MQTTConfig, handler MQTTHandler) error
+	UnregisterMQTTSubscription(ctx context.Context, event string) error
 }
 
 type Media struct {
