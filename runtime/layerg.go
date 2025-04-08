@@ -186,6 +186,9 @@ type LayerGModule interface {
 
 	RegisterMQTTSubscription(ctx context.Context, config MQTTConfig, handler MQTTHandler) error
 	UnregisterMQTTSubscription(ctx context.Context, event string) error
+
+	EventSubscribe(ctx context.Context, subscription EventSubscription, eventHandler EventHandler) error
+	EventQuery(ctx context.Context, query EventQuery) (*EventResponse, error)
 }
 
 type Media struct {
