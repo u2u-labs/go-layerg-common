@@ -1535,8 +1535,10 @@ message UASocialLoginRequest {
     telegram = 0;
     // Google
     google = 1;
-    // Huawei App Gallery
+    // X
     twitter = 2;
+    // Facebook
+    facebook = 3;
   }
 }
 
