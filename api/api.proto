@@ -95,8 +95,6 @@ message AccountDevice {
 message AccountEmail {
   // A valid RFC-5322 email address.
   string email = 1;
-  // A password for the user account.
-  string password = 2; // Ignored with unlink operations.
   // Extra information that will be bundled in the session token.
   map<string, string> vars = 3;
 }
@@ -228,7 +226,7 @@ message AuthenticateEmailRequest {
   // Register the account if the user does not already exist.
   google.protobuf.BoolValue create = 2;
   // Set the username on the account at register. Must be unique.
-  string username = 3;
+  string otp = 3;
 }
 
 // Authenticate against the server with Facebook.
