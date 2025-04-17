@@ -179,7 +179,7 @@ type LayerGModule interface {
 	RegisterWebhook(ctx context.Context, config WebhookConfig, handler WebhookHandler) error
 
 	GetNFTs(ctx context.Context, params NFTQueryParams) (*NFTResponse, error)
-	GetAggToken(ctx context.Context) (string, error)
+	// GetAggToken(ctx context.Context) (string, error)
 	GetCollectionAsset(ctx context.Context, params CollectionAssetQueryParams, token string) (*CollectionAssetResponse, error)
 
 	GetRequiredHeadersUA() (map[string]string, error)
