@@ -23,7 +23,7 @@ type LayerGModule interface {
 
 	AuthenticateTokenGenerate(userID, username string, exp int64, vars map[string]string) (string, int64, error)
 
-	AccountGetId(ctx context.Context, userID string) (*api.Account, error)
+	AccountGetId(ctx context.Context, userID string, onchainId string) (*api.Account, error)
 	AccountsGetId(ctx context.Context, userIDs []string) ([]*api.Account, error)
 	AccountUpdateId(ctx context.Context, userID, username string, metadata map[string]interface{}, displayName, timezone, location, langTag, avatarUrl string) error
 
@@ -178,9 +178,9 @@ type LayerGModule interface {
 
 	RegisterWebhook(ctx context.Context, config WebhookConfig, handler WebhookHandler) error
 
-	GetNFTs(ctx context.Context, params NFTQueryParams) (*NFTResponse, error)
+	// GetNFTs(ctx context.Context, params NFTQueryParams) (*NFTResponse, error)
 	// GetAggToken(ctx context.Context) (string, error)
-	GetCollectionAsset(ctx context.Context, params CollectionAssetQueryParams, token string) (*CollectionAssetResponse, error)
+	// GetCollectionAsset(ctx context.Context, params CollectionAssetQueryParams, token string) (*CollectionAssetResponse, error)
 
 	GetRequiredHeadersUA() (map[string]string, error)
 
