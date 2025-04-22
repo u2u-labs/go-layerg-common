@@ -1,0 +1,19 @@
+{
+    "name": "layerg-runtime",
+    "version": "0.1.0",
+    "description": "The server framework Type definitions for the LayerG game server.",
+    "author": "LayerG",
+    "license": "Apache-2.0",
+    "homepage": "https://layerg.xyz",
+    "keywords": [
+        "layerg",
+        "typescript",
+        "game server"
+    ],
+    "typings": "./index.d.ts",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/u2u-labs/go-layerg-common.git"
+    }
+  }
+  
