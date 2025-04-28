@@ -187,6 +187,7 @@ type LayerGModule interface {
 
 	EventSubscribe(ctx context.Context, subscription EventSubscription, eventHandler EventHandler) error
 	EventQuery(ctx context.Context, query EventQuery) (*EventResponse, error)
+	DecodeContractEvent(contractABI string, receiptJSON string, eventName string, output interface{}) error
 }
 
 type Media struct {
