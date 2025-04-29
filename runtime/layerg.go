@@ -20,6 +20,7 @@ type LayerGModule interface {
 	AuthenticateGoogle(ctx context.Context, token, username string, create bool, code, state, errStr string) (string, string, bool, error)
 	AuthenticateSteam(ctx context.Context, token, username string, create bool) (string, string, bool, error)
 	AuthenticateTwitter(ctx context.Context, username, code, state, errStr string, create bool) (string, string, bool, error)
+	AuthenticateUA(ctx context.Context, state string, code string, source int) (string, string, bool, error)
 
 	AuthenticateTokenGenerate(userID, username string, exp int64, vars map[string]string) (string, int64, error)
 
