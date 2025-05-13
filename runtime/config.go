@@ -35,11 +35,6 @@ type SocketConfig interface {
 	GetProtocol() string
 }
 
-// SocialConfigApple is configuration relevant to Apple Sign In.
-type SocialConfigApple interface {
-	GetBundleId() string
-}
-
 // RuntimeConfig is configuration relevant to the Runtimes.
 type RuntimeConfig interface {
 	GetEnv() []string
