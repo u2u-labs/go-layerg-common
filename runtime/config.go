@@ -6,6 +6,7 @@ type Config interface {
 	GetLogger() LoggerConfig
 	GetSession() SessionConfig
 	GetSocket() SocketConfig
+	GetSocial() SocialConfig
 	GetRuntime() RuntimeConfig
 	GetIAP() IAPConfig
 }
@@ -33,6 +34,35 @@ type SocketConfig interface {
 	GetPort() int
 	GetAddress() string
 	GetProtocol() string
+}
+
+// SocialConfig is configuration relevant to the social authentication providers.
+type SocialConfig interface {
+	GetSteam() SocialConfigSteam
+	GetFacebookInstantGame() SocialConfigFacebookInstantGame
+	GetFacebookLimitedLogin() SocialConfigFacebookLimitedLogin
+	GetApple() SocialConfigApple
+}
+
+// SocialConfigSteam is configuration relevant to Steam.
+type SocialConfigSteam interface {
+	GetPublisherKey() string
+	GetAppID() int
+}
+
+// SocialConfigFacebookInstantGame is configuration relevant to Facebook Instant Games.
+type SocialConfigFacebookInstantGame interface {
+	GetAppSecret() string
+}
+
+// SocialConfigFacebookLimitedLogin is configuration relevant to Facebook Limited Login.
+type SocialConfigFacebookLimitedLogin interface {
+	GetAppId() string
+}
+
+// SocialConfigApple is configuration relevant to Apple Sign In.
+type SocialConfigApple interface {
+	GetBundleId() string
 }
 
 // RuntimeConfig is configuration relevant to the Runtimes.
@@ -69,4 +99,8 @@ type IAPHuaweiConfig interface {
 
 type IAPFacebookInstantConfig interface {
 	GetAppSecret() string
+}
+
+type GoogleAuthConfig interface {
+	GetCredentialsJSON() string
 }
