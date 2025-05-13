@@ -26,3 +26,10 @@ type Notification struct {
 	CreateTime *timestamppb.Timestamp
 	Persistent bool
 }
+
+type NotificationUpdate struct {
+	Id      string
+	Subject *string
+	Content map[string]any
+	Sender  *string
+}

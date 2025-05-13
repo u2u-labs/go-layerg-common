@@ -188,6 +188,11 @@ type LayerGModule interface {
 	EventSubscribe(ctx context.Context, subscription EventSubscription, eventHandler EventHandler) error
 	EventQuery(ctx context.Context, query EventQuery) (*EventResponse, error)
 	DecodeContractEvent(contractABI string, receiptJSON string, eventName string, output interface{}) error
+
+	UsersGetFriendStatus(ctx context.Context, userID string, userIDs []string) ([]*api.Friend, error)
+	NotificationsUpdate(ctx context.Context, updates ...NotificationUpdate) error
+	StatusFollow(sessionID string, userIDs []string) error
+	StatusUnfollow(sessionID string, userIDs []string) error
 }
 
 type Media struct {
