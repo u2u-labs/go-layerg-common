@@ -1,0 +1,72 @@
+package runtime
+
+type Config interface {
+	GetName() string
+	GetShutdownGraceSec() int
+	GetLogger() LoggerConfig
+	GetSession() SessionConfig
+	GetSocket() SocketConfig
+	GetRuntime() RuntimeConfig
+	GetIAP() IAPConfig
+}
+
+// LoggerConfig is configuration relevant to logging levels and output.
+type LoggerConfig interface {
+	GetLevel() string
+}
+
+// SessionConfig is configuration relevant to the session.
+type SessionConfig interface {
+	GetEncryptionKey() string
+	GetTokenExpirySec() int64
+	GetRefreshEncryptionKey() string
+	GetRefreshTokenExpirySec() int64
+	GetSingleSocket() bool
+	GetSingleMatch() bool
+	GetSingleParty() bool
+	GetSingleSession() bool
+}
+
+// SocketConfig is configuration relevant to the transport socket and protocol.
+type SocketConfig interface {
+	GetServerKey() string
+	GetPort() int
+	GetAddress() string
+	GetProtocol() string
+}
+
+// RuntimeConfig is configuration relevant to the Runtimes.
+type RuntimeConfig interface {
+	GetEnv() []string
+	GetHTTPKey() string
+}
+
+type IAPConfig interface {
+	GetApple() IAPAppleConfig
+	GetGoogle() IAPGoogleConfig
+	GetHuawei() IAPHuaweiConfig
+	GetFacebookInstant() IAPFacebookInstantConfig
+}
+
+type IAPAppleConfig interface {
+	GetSharedPassword() string
+	GetNotificationsEndpointId() string
+}
+
+type IAPGoogleConfig interface {
+	GetClientEmail() string
+	GetPrivateKey() string
+	GetNotificationsEndpointId() string
+	GetRefundCheckPeriodMin() int
+	GetPackageName() string
+}
+
+type IAPHuaweiConfig interface {
+	GetPublicKey() string
+	GetClientID() string
+	GetClientSecret() string
+}
+
+type IAPFacebookInstantConfig interface {
+	GetAppSecret() string
+}
