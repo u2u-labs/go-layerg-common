@@ -163,6 +163,8 @@ message AddFriendsRequest {
   repeated string ids = 1;
   // The account username of a user.
   repeated string usernames = 2;
+  // Optional metadata to add to friends.
+  string metadata = 3;
 }
 
 // Add users to a group.
