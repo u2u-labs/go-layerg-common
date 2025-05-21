@@ -41,6 +41,15 @@ type RuntimeConfig interface {
 	GetHTTPKey() string
 }
 
+type LayerGModuleConfig interface {
+	GetHubAPIKey() string
+	GetHubAPIKeyID() string
+	GetPortalUrl() string
+	GetUniversalAccountUrl() string
+	GetUAAPIKey() string
+	GetUASecret() string
+}
+
 type IAPConfig interface {
 	GetApple() IAPAppleConfig
 	GetGoogle() IAPGoogleConfig
