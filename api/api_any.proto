@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package layerg.api;
+
+option go_package = "github.com/u2u-labs/go-layerg-common/api";
+
+option java_multiple_files = true;
+option java_outer_classname = "LayerGApi";
+option java_package = "com.u2ulabs.layerg.api";
+
+option csharp_namespace = "LayerG.Protobuf";
+
+message AnyQuery {
+    repeated string value = 1; 
+}
+
+message AnyRequest {
+    string cid = 1;
+    string name = 2;
+    map<string, string> header = 3;
+    map<string, AnyQuery> query = 4;
+    map<string, string>  context = 5;
+    string http_key = 6;
+    oneof body {
+        bytes bytes_content = 8;
+        string string_content = 9;
+    }
+}
+
+message AnyResponseWriter {
+    map<string, string> header = 1;
+    oneof body {
+        bytes bytes_content = 2;
+        string string_content = 3;
+    }
+}
